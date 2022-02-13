@@ -17,12 +17,14 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { RatingModule } from 'primeng/rating';
 import { TestsComponent } from './components/tests/tests.component';
 import { DropdownModule } from 'primeng/dropdown';
+import { CarComponent } from './components/car/car.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
-    TestsComponent],
+    TestsComponent,
+    CarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
