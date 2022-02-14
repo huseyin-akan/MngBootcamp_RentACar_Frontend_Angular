@@ -1,10 +1,9 @@
-import { PageRequest } from './../models/paginate/pageRequest';
-import { CarListModel } from './../models/carListModel';
 import { Observable } from 'rxjs/internal/Observable';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Paginate } from '../models/paginate/paginate';
+import { PagedListResponseModel } from 'src/app/core/models/pagedListResponseModel';
+import { CarListModel } from '../models/carListModel';
 
 @Injectable({
   providedIn: 'root'
@@ -21,12 +20,12 @@ export class CarService {
 
   constructor(private httpClient : HttpClient) { }
 
-  getAllCars() :Observable<Paginate<CarListModel>> {
-    return this.httpClient.get<Paginate<CarListModel>>(this.apiUrl+"getall")
+  getAllCars() :Observable<PagedListResponseModel<CarListModel>> {
+    return this.httpClient.get<PagedListResponseModel<CarListModel>>(this.apiUrl+"getall")
   }
 
-  getAllRentableCars(page:number = 0, pageSize : number = 10) :Observable<Paginate<CarListModel>> {
-    return this.httpClient.get<Paginate<CarListModel>>(`${this.apiUrl}getallrentables?Page=${page}&PageSize=${pageSize}`);
+  getAllRentableCars(page:number = 0, pageSize : number = 10) :Observable<PagedListResponseModel<CarListModel>> {
+    return this.httpClient.get<PagedListResponseModel<CarListModel>>(`${this.apiUrl}getallrentables?Page=${page}&PageSize=${pageSize}`);
   }
 
   

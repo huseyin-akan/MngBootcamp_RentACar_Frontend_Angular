@@ -17,14 +17,19 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { RatingModule } from 'primeng/rating';
 import { TestsComponent } from './components/tests/tests.component';
 import { DropdownModule } from 'primeng/dropdown';
-import { CarComponent } from './components/car/car.component';
+import { CarComponent } from './features/rentals/components/car/car.component';
+import { BrandComponent } from './features/rentals/components/brand/brand.component';
+import { ListboxModule} from 'primeng/listbox';
+import { ModelComponent } from './features/rentals/components/model/model.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     TestsComponent,
-    CarComponent],
+    CarComponent,
+    BrandComponent,
+    ModelComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -41,7 +46,8 @@ import { CarComponent } from './components/car/car.component';
     InputTextModule,
     CalendarModule,
     CheckboxModule,
-    DropdownModule
+    DropdownModule,
+    ListboxModule
   ],
   providers: [],
   bootstrap: [AppComponent],

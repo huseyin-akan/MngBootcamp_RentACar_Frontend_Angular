@@ -17,9 +17,9 @@
                     <img [src]="car.imageUrl" [alt]="car.brand"/>
                     <div class="product-list-detail">
                         <div class="product-name">{{car.brand}}</div>
-                        <div class="product-description">{{car.description}}</div>
+                        <div class="product-description">{{car.city}}</div>
                         <p-rating [ngModel]="car.findexScore" [readonly]="true" [cancel]="false"></p-rating>
-                        <i class="pi pi-tag product-category-icon"></i><span class="product-category">{{car.modelName}} - {{car.modelYear}}</span>
+                        <i class="pi pi-tag product-category-icon"></i><span class="product-category">{{car.model}} - {{car.modelYear}}</span>
                     </div>
                     <div class="product-list-action">
                         <span class="product-price">₺{{car.dailyPrice}}</span>
@@ -39,8 +39,8 @@
                     </div>
                     <div class="product-grid-item-content">
                       <img [src]="car.imageUrl" [alt]="car.brand"/>
-                        <div class="product-name">{{car.modelName}} - {{car.modelYear}}</div>
-                        <div class="product-description">{{car.description}}</div>
+                        <div class="product-name">{{car.model}} - {{car.modelYear}}</div>
+                        <div class="product-description">{{car.city}}</div>
                         <p-rating [ngModel]="car.findexScore" [readonly]="true" [cancel]="false"></p-rating>
                     </div>
                     <div class="product-grid-item-bottom">

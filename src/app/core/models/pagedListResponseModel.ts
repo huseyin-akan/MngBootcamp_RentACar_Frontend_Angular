@@ -1,4 +1,4 @@
-export interface Paginate<T>{
+export interface PagedListResponseModel<T>{
     items: T[],
     index : number,
     size : number,

@@ -1,0 +1,4 @@
+<p-listbox [options]="brands.items" [(ngModel)]="selectedBrand" optionLabel="name"></p-listbox>
+
+
+<p *ngIf="selectedBrand"> {{selectedBrand.name}} seçildi. </p>
