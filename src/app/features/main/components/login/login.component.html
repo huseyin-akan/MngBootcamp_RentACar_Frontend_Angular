@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <div class="login-form bg-light mt-4 p-4">
+                <form [formGroup]="loginForm" action="" method="" class="row g-3">
+                    <h4>Tekrar Hoşgeldiniz <i class="far fa-smile-beam" style="color:royalblue"></i></h4>
+                    <div class="col-12">
+                        <label>Kullanıcı Adı / Email</label>
+                        <input type="text" name="email" formControlName="email" class="form-control" placeholder="Kullanıcı adı veya email">
+                    </div>
+                    <div class="col-12">
+                        <label>Şifre</label>
+                        <input type="password" name="password" formControlName="password" class="form-control" placeholder="**************">
+                    </div>
+                    <div class="col-12">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe"> Beni Hatırla</label>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <button (click)="login()" class="btn btn-dark float-end">Giriş Yap</button>
+                    </div>
+                </form>
+                <hr class="mt-4">
+                <div class="col-12">
+                    <p class="text-center mb-0">Hesabınız yok mu? <a href="/register" class="float-right btn btn-outline-primary">Kaydolun</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <body class="text-center">
+    <form [formGroup]="loginForm" class="form-signin">
+        <h1 class="h3 mb-3 font-weight-normal">Giriş Yap</h1>
+        <label for="inputEmail" class="sr-only">E-posta</label>
+        <input formControlName="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" autofocus>
+        <label for="inputPassword" class="sr-only">Parola</label>
+        <input formControlName="password" type="password" id="inputPassword" class="form-control" placeholder="Password">
+        <div class="checkbox mb-3">
+            <label>
+                <input  type="checkbox" value="remember-me"> Beni Hatırla
+            </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" (click)="login()" >Giriş Yap</button>
+        <p class="mt-5 mb-3 text-muted">&copy; 2017-2021</p>
+    </form>
+</body> -->

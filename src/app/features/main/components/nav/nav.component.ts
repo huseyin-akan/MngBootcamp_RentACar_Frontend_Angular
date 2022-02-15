@@ -1,4 +1,3 @@
-import { AlertifyService } from '../../core/services/alertify.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,12 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  constructor(
-    private alertifyService :AlertifyService
-  ) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.alertifyService.success("İlk denememiz başarılı olsun inş.");
   }
 
 }

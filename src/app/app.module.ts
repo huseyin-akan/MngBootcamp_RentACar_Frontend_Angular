@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NavComponent } from './components/nav/nav.component';
 import { ButtonModule } from 'primeng/button';
 import { DataViewModule } from 'primeng/dataview';
 import { PanelModule } from 'primeng/panel';
@@ -20,16 +19,26 @@ import { DropdownModule } from 'primeng/dropdown';
 import { CarComponent } from './features/rentals/components/car/car.component';
 import { BrandComponent } from './features/rentals/components/brand/brand.component';
 import { ListboxModule} from 'primeng/listbox';
-import { ModelComponent } from './features/rentals/components/model/model.component'
+import { ModelComponent } from './features/rentals/components/model/model.component';
+import { HomeComponent } from './features/main/components/home/home.component';
+import { NavComponent } from './features/main/components/nav/nav.component';
+import { LoginComponent } from './features/main/components/login/login.component';
+import { JwtModule } from '@auth0/angular-jwt';
+
+export function tokenGetter() {
+  return localStorage.getItem("token");
+}
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavComponent,
     TestsComponent,
     CarComponent,
     BrandComponent,
-    ModelComponent],
+    ModelComponent,
+    HomeComponent,
+    NavComponent,
+    LoginComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -47,7 +56,12 @@ import { ModelComponent } from './features/rentals/components/model/model.compon
     CalendarModule,
     CheckboxModule,
     DropdownModule,
-    ListboxModule
+    ListboxModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent],
