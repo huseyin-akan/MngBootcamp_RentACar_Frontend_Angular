@@ -1,14 +1,16 @@
+import { LoginResultModel } from './../../features/main/models/loginResultModel';
 import { RegisterICModel } from './../../features/main/models/registerICModel';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { AccessToken } from 'src/app/features/main/models/accessToken';
 import { LoginModel } from 'src/app/features/main/models/loginModel';
 import { environment } from 'src/environments/environment';
 import { AlertifyService } from './alertify.service';
 import { RegisterCCModel } from 'src/app/features/main/models/registerCCModel';
+import { User } from 'src/app/features/main/models/user';
 
 const role = "http://schemas.microsoft.com/ws/2008/06/identity/claims/role";
 const name ="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name";
@@ -24,15 +26,26 @@ export class AuthService {
   public nameSurname = new BehaviorSubject(this.getNameSurname());
   public userName = new BehaviorSubject(this.getUserName());
 
+  private userSubject: BehaviorSubject<User>;
+  public user: Observable<User>;
+
   constructor(
     private httpClient: HttpClient,
     private jwtHelper: JwtHelperService,
     private router: Router,
     private alertifyService : AlertifyService
-  ) { }
+  ) 
+  { 
+    this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
+    this.user = this.userSubject.asObservable();
+  }
+
+  public get userValue(): User {
+    return this.userSubject.value;
+  }
 
   login(loginModel: LoginModel) {
-    return this.httpClient.post<AccessToken>(
+    return this.httpClient.post<LoginResultModel>(
       environment.apiUrl + 'Auth/login',
       loginModel
     );
@@ -41,8 +54,9 @@ export class AuthService {
   logout() {
     // remove user from local storage
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
     
-    //tokenService'in elemanlarını çalıştırıyoruz.
+    this.userSubject.next(null);
     this.isAdminLogged.next(false);
     this.isLogged.next(false);
     this.nameSurname.next("");
@@ -52,14 +66,14 @@ export class AuthService {
   }
 
   registerIndiviualCustomer(registerModel: RegisterICModel) {
-    return this.httpClient.post<AccessToken>(
+    return this.httpClient.post<LoginResultModel>(
       environment.apiUrl + 'IndividualCustomers/add',
       registerModel
     );
   }
 
   registerCorporateCustomer(registerModel: RegisterCCModel) {
-    return this.httpClient.post<AccessToken>(
+    return this.httpClient.post<LoginResultModel>(
       environment.apiUrl + 'CorporateCustomers/add',
       registerModel
     );
@@ -144,7 +158,7 @@ export class AuthService {
   adminIsLoggedIn() : boolean{
     if(this.isLoggedIn()){
       let roles:string[] = this.getUserRoles();
-      let result = roles.some( item => item == "admin");
+      let result = roles.some( item => item == "Admin");
       this.isAdminLogged.next(result); 
       return result;
     }

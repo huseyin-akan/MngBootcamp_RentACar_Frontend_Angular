@@ -1,14 +1,26 @@
-<app-nav></app-nav>
-<div class="container">
+<!-- Admin Sayfası -->
+
+<div *ngIf="adminLoggedIn" class="container-fluid rac-main-area">
+  <app-nav></app-nav>
   
-    <div class="row">
-      <div class="col-md-3">
-        <app-brand></app-brand>
-      </div>
-      <div class="col-md-9">
-        <app-car></app-car>
-        <app-tests></app-tests>
-        <router-outlet></router-outlet>
+  <div class="row my-3">
+      <router-outlet></router-outlet>      
+  </div>
+</div>
+
+<!-- Normal Kullanıcı veya Boş Kullanıcı Sayfası -->
+<div *ngIf="normalUser" class="container-fluid rac-main-area">
+  
+  <app-nav></app-nav>
+
+  <div class="container-fluid">
+    <div class="row">      
+      <div class="col">
+        <div class="row my-3">          
+          <router-outlet></router-outlet>      
+        </div>
       </div>
     </div>
-  </div>
+  </div>  
+ 
+</div>

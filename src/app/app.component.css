@@ -1,0 +1,10 @@
+.container{
+    min-width: 100%;    
+}
+.container-fluid{
+    width: 100%;
+}
+
+.rac-main-area{
+    background-color:#192a56;
+} 

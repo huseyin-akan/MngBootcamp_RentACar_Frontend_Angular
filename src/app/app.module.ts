@@ -24,6 +24,7 @@ import { HomeComponent } from './features/main/components/home/home.component';
 import { NavComponent } from './features/main/components/nav/nav.component';
 import { LoginComponent } from './features/main/components/login/login.component';
 import { JwtModule } from '@auth0/angular-jwt';
+import { ProfileSectionComponent } from './features/main/components/nav/profile-section/profile-section.component';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -38,7 +39,8 @@ export function tokenGetter() {
     ModelComponent,
     HomeComponent,
     NavComponent,
-    LoginComponent],
+    LoginComponent,
+    ProfileSectionComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -1,34 +1,39 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-4 offset-md-4">
-            <div class="login-form bg-light mt-4 p-4">
-                <form [formGroup]="loginForm" action="" method="" class="row g-3">
-                    <h4>Tekrar Hoşgeldiniz <i class="far fa-smile-beam" style="color:royalblue"></i></h4>
-                    <div class="col-12">
-                        <label>Kullanıcı Adı / Email</label>
-                        <input type="text" name="email" formControlName="email" class="form-control" placeholder="Kullanıcı adı veya email">
-                    </div>
-                    <div class="col-12">
-                        <label>Şifre</label>
-                        <input type="password" name="password" formControlName="password" class="form-control" placeholder="**************">
-                    </div>
-                    <div class="col-12">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="rememberMe">
-                            <label class="form-check-label" for="rememberMe"> Beni Hatırla</label>
+<div style="position:relative">
+    <img class="background-img" src="https://www.teahub.io/photos/full/0-4074_car-city-wallpaper-hd.jpg"> 
+
+    <div class="login-component">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="login-form bg-light mt-4 p-4">
+                    <form [formGroup]="loginForm" action="" method="" class="row g-3">
+                        <h4>Tekrar Hoşgeldiniz <i class="far fa-smile-beam" style="color:royalblue"></i></h4>
+                        <div class="col-12">
+                            <label>Kullanıcı Adı / Email</label>
+                            <input type="text" name="email" formControlName="email" class="form-control" placeholder="Kullanıcı adı veya email">
                         </div>
-                    </div>
+                        <div class="col-12">
+                            <label>Şifre</label>
+                            <input type="password" name="password" formControlName="password" class="form-control" placeholder="**************">
+                        </div>
+                        <div class="col-12">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="rememberMe">
+                                <label class="form-check-label" for="rememberMe"> Beni Hatırla</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <button (click)="login()" class="btn btn-dark float-end">Giriş Yap</button>
+                        </div>
+                    </form>
+                    <hr class="mt-4">
                     <div class="col-12">
-                        <button (click)="login()" class="btn btn-dark float-end">Giriş Yap</button>
+                        <p class="text-center mb-0">Hesabınız yok mu? <a href="/register" class="float-right btn btn-outline-primary">Kaydolun</a></p>
                     </div>
-                </form>
-                <hr class="mt-4">
-                <div class="col-12">
-                    <p class="text-center mb-0">Hesabınız yok mu? <a href="/register" class="float-right btn btn-outline-primary">Kaydolun</a></p>
                 </div>
             </div>
         </div>
     </div>
+
 </div>
 
 <!-- <body class="text-center">

@@ -1,0 +1,9 @@
+.login-component{
+   position: absolute;
+   top: 20%;
+   left: 30%;
+}
+
+.background-img {
+    border: 2px solid black;   
+}

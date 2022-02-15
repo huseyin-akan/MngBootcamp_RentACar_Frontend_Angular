@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
         
         this.alertifyService.success("Sisteme giriş başarılı oldu");
         console.log(response);
-        localStorage.setItem("token", response.token);
+        localStorage.setItem("token", response.accessToken.token);
         
         //metodu tetikleyip admin girdiyse arayüzün değişmesini sağlıyoruz.
         this.authService.adminIsLoggedIn();
