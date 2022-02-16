@@ -25,6 +25,9 @@ import { NavComponent } from './features/main/components/nav/nav.component';
 import { LoginComponent } from './features/main/components/login/login.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { ProfileSectionComponent } from './features/main/components/nav/profile-section/profile-section.component';
+import { RegisterComponent } from './features/main/components/register/register.component';
+import { ErrorComponent } from './features/main/components/error/error.component';
+import {RadioButtonModule} from 'primeng/radiobutton';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -40,7 +43,9 @@ export function tokenGetter() {
     HomeComponent,
     NavComponent,
     LoginComponent,
-    ProfileSectionComponent],
+    ProfileSectionComponent,
+    RegisterComponent,
+    ErrorComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -48,6 +53,7 @@ export function tokenGetter() {
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    RadioButtonModule,
     ButtonModule,
     DataViewModule,
     RatingModule,

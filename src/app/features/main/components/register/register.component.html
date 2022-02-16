@@ -1,0 +1,84 @@
+<div style="position : relative">
+    <img class="background-img" src="https://www.teahub.io/photos/full/0-4074_car-city-wallpaper-hd.jpg">
+    
+    <div class="register-component">
+
+        <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-4">
+                <h3 class="text-uppercase text-center mb-3" style="color: blueviolet">Create an account</h3>
+
+                <div class="d-flex">
+                    <p-radioButton name="groupname" value="val1" label="Bireysel Müşteri" (onClick)="updateForm()" [(ngModel)]="selectedValue"></p-radioButton>
+                    <p-radioButton style="margin-left: 1rem" name="groupname" value="val2" (onClick)="updateForm()" label="Kurumsal Müşteri" [(ngModel)]="selectedValue"></p-radioButton>
+                </div>
+                <br>
+
+                <div *ngIf="selectedValue =='val1' " class="form-outline mb-4">
+                    <input  type="text" class="form-control" placeholder= "Your First Name" [(ngModel)]="firstName" />
+                </div>
+
+                <div *ngIf="selectedValue =='val1' " class="form-outline mb-4">
+                    <input type="text" class="form-control" name="lastName" placeholder= "Your Last Name"
+                        [(ngModel)]="lastName" required minlength="3" maxlength="20" />
+                </div>
+
+                <div *ngIf="selectedValue =='val2' " class="form-outline mb-4">
+                    <input type="text" class="form-control" name="companyName" placeholder= "Company Name"
+                        [(ngModel)]="companyName" required minlength="3" maxlength="20" />
+                </div>
+
+                <div class="form-outline mb-4">
+                    <input type="text" class="form-control" name="userName" placeholder= "User Name"
+                        [(ngModel)]="userName" required minlength="3" maxlength="20" />
+                </div>
+
+                <div class="form-outline mb-4">
+                    <input type="email" class="form-control" name="email" placeholder= "Email"
+                        [(ngModel)]="email" required />
+                </div>
+
+                <div class="form-outline mb-4">
+                    <input type="password" class="form-control" name="password" placeholder= "Password"
+                        [(ngModel)]="password" required />
+                </div>
+
+                <!-- <div class="form-outline mb-4">
+                        <label for="password"> Repeat your password Email</label>
+                        <input type="password" class="form-control form-control-lg" name="password"  [(ngModel)]="form.password" required #password="ngModel"/>
+                    </div> -->
+
+                <div class="form-check d-flex justify-content-center mb-5">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
+                    <label class="form-check-label" for="form2Example3g">
+                        I agree all statements in <a href="#!" class="text-body"><u>Terms of
+                                service</u></a>
+                    </label>
+                </div>
+
+                <div class="d-flex justify-content-center">
+                    <button (click)="registerIndiviualCustomer()"
+                        class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+                </div>
+
+                <p class="text-center text-muted mt-4 mb-0">Have already an account? <a href="/login"
+                        class="fw-bold text-body"><u>Login here</u></a></p>
+
+
+            </div>
+        </div>
+
+
+
+            <div class="mask d-flex align-items-center gradient-custom-3">
+                <div class="container">
+                    <div class="row d-flex justify-content-center align-items-center">
+                        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+</div>
+

@@ -1,0 +1,9 @@
+.register-component{
+    position: absolute;
+    top: 10%;
+    left: 50%;
+ }
+ 
+ .background-img {
+     border: 2px solid black;   
+ }
