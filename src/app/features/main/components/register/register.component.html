@@ -9,7 +9,8 @@
 
                 <div class="d-flex">
                     <p-radioButton name="groupname" value="val1" label="Bireysel Müşteri" (onClick)="updateForm()" [(ngModel)]="selectedValue"></p-radioButton>
-                    <p-radioButton style="margin-left: 1rem" name="groupname" value="val2" (onClick)="updateForm()" label="Kurumsal Müşteri" [(ngModel)]="selectedValue"></p-radioButton>
+                    <div class=""></div>
+                    <p-radioButton class="rb-right" name="groupname" value="val2" (onClick)="updateForm()" label="Kurumsal Müşteri" [(ngModel)]="selectedValue"></p-radioButton>
                 </div>
                 <br>
 
@@ -25,6 +26,16 @@
                 <div *ngIf="selectedValue =='val2' " class="form-outline mb-4">
                     <input type="text" class="form-control" name="companyName" placeholder= "Company Name"
                         [(ngModel)]="companyName" required minlength="3" maxlength="20" />
+                </div>
+
+                <div *ngIf="selectedValue =='val1' " class="form-outline mb-4">
+                    <input type="text" class="form-control" name="nationalId" placeholder= "TC No"
+                        [(ngModel)]="nationalId" required minlength="3" maxlength="20" />
+                </div>
+
+                <div *ngIf="selectedValue =='val2' " class="form-outline mb-4">
+                    <input type="text" class="form-control" name="taxNumber" placeholder= "Vergi Numarası"
+                        [(ngModel)]="taxNumber" required minlength="3" maxlength="20" />
                 </div>
 
                 <div class="form-outline mb-4">
@@ -55,9 +66,14 @@
                     </label>
                 </div>
 
-                <div class="d-flex justify-content-center">
+                <div *ngIf="selectedValue =='val1' "  class="d-flex justify-content-center">
                     <button (click)="registerIndiviualCustomer()"
-                        class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+                        class="btn btn-success btn-block btn-lg">Register</button>
+                </div>
+
+                <div *ngIf="selectedValue =='val2' "  class="d-flex justify-content-center">
+                    <button (click)="registerCorporateCustomer()"
+                        class="btn btn-success btn-block btn-lg">Register</button>
                 </div>
 
                 <p class="text-center text-muted mt-4 mb-0">Have already an account? <a href="/login"

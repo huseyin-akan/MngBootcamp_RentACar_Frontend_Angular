@@ -5,7 +5,6 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { AccessToken } from 'src/app/features/main/models/accessToken';
 import { LoginModel } from 'src/app/features/main/models/loginModel';
 import { environment } from 'src/environments/environment';
 import { AlertifyService } from './alertify.service';
@@ -28,6 +27,8 @@ export class AuthService {
 
   private userSubject: BehaviorSubject<User>;
   public user: Observable<User>;
+
+  apiUrl :string = environment.apiUrl;
 
   constructor(
     private httpClient: HttpClient,
@@ -66,11 +67,14 @@ export class AuthService {
   }
 
   registerIndiviualCustomer(registerModel: RegisterICModel) {
-    return this.httpClient.post<LoginResultModel>(
-      environment.apiUrl + 'IndividualCustomers/add',
+    console.log(this.apiUrl + 'individualcustomers/add')
+    
+    return this.httpClient.post<LoginResultModel>(      
+      this.apiUrl + 'individualcustomers/add',
       registerModel
     );
   }
+  //http://localhost:5167/api/IndividualCustomers/add http://localhost:5167/api/
 
   registerCorporateCustomer(registerModel: RegisterCCModel) {
     return this.httpClient.post<LoginResultModel>(

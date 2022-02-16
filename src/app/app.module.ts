@@ -1,3 +1,4 @@
+import { AdminModule } from './admin/admin.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -14,7 +15,6 @@ import { RippleModule } from 'primeng/ripple';
 import { CalendarModule } from 'primeng/calendar';
 import { CheckboxModule } from 'primeng/checkbox';
 import { RatingModule } from 'primeng/rating';
-import { TestsComponent } from './components/tests/tests.component';
 import { DropdownModule } from 'primeng/dropdown';
 import { CarComponent } from './features/rentals/components/car/car.component';
 import { BrandComponent } from './features/rentals/components/brand/brand.component';
@@ -36,7 +36,6 @@ export function tokenGetter() {
 @NgModule({
   declarations: [
     AppComponent,
-    TestsComponent,
     CarComponent,
     BrandComponent,
     ModelComponent,
@@ -65,6 +64,7 @@ export function tokenGetter() {
     CheckboxModule,
     DropdownModule,
     ListboxModule,
+    AdminModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter

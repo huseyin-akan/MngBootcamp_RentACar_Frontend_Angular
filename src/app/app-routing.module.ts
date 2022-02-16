@@ -11,7 +11,7 @@ const routes: Routes = [
   {path: "home", component: HomeComponent},
 
   //boş veride ana sayfaya gönder.
-  {path:'' , redirectTo: '', pathMatch : "full"},
+  {path:'' , redirectTo: '/home', pathMatch : "full"},
 
   // bilinmeyen istekler için hata sayfasına yönlendir.
   { path: '**', component: ErrorComponent }
