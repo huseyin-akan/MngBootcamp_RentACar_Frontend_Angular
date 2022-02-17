@@ -4,11 +4,21 @@ import { RouterModule, Routes } from '@angular/router';
 import { ErrorComponent } from './features/main/components/error/error.component';
 import { HomeComponent } from './features/main/components/home/home.component';
 import { LoginComponent } from './features/main/components/login/login.component';
+import { DashboardComponent } from './admin/components/dashboard/dashboard.component';
+import { AdminBrandsComponent } from './admin/components/admin-brands/admin-brands.component';
+import { AdminGuard } from './core/guards/admin.guard';
 
 const routes: Routes = [
   {path: "login" , component : LoginComponent},
   {path: "register" , component : RegisterComponent},
   {path: "home", component: HomeComponent},
+  { path: 'adminalThings', component: DashboardComponent , canActivate: [AdminGuard],
+      children :[
+          { path: 'dashboard', component: DashboardComponent, canActivate: [AdminGuard] },
+          { path: 'brands', component: AdminBrandsComponent, canActivate: [AdminGuard] }
+        ]
+  },
+
 
   //boş veride ana sayfaya gönder.
   {path:'' , redirectTo: '/home', pathMatch : "full"},

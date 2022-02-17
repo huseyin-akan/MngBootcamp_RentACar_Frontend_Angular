@@ -7,6 +7,10 @@ body {
     height: 16px;
     vertical-align: text-bottom;
   }
+  .dashboard-router-position{
+    padding-left: 20%;
+    padding-top:10%
+  }
   
   /*
    * Sidebar

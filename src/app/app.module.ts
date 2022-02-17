@@ -1,4 +1,3 @@
-import { AdminModule } from './admin/admin.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -27,7 +26,9 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { ProfileSectionComponent } from './features/main/components/nav/profile-section/profile-section.component';
 import { RegisterComponent } from './features/main/components/register/register.component';
 import { ErrorComponent } from './features/main/components/error/error.component';
-import {RadioButtonModule} from 'primeng/radiobutton';
+import { RadioButtonModule} from 'primeng/radiobutton';
+import { AdminModule } from './admin/admin.module';
+import { TableModule} from 'primeng/table';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -58,6 +59,7 @@ export function tokenGetter() {
     RatingModule,
     DialogModule,
     RippleModule,
+    TableModule,
     PanelModule,
     InputTextModule,
     CalendarModule,

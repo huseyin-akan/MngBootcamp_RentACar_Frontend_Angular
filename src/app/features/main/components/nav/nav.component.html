@@ -42,7 +42,7 @@
                         <li><a routerLink="/home" routerLinkActive="active"><span>About</span></a></li>
                         <li><a routerLink="/home" routerLinkActive="active"><span>Blog</span></a></li>
                         <li><a routerLink="/home" routerLinkActive="active"><span>Contact</span></a></li>
-                        <li *ngIf="adminLoggedIn" ><a routerLinkActive="/adminalThings" routerLink="active"><span>Admin</span></a></li>
+                        <li *ngIf="adminLoggedIn" ><a routerLink="/adminalThings" routerLinkActive="active" ><span>Admin</span></a></li>
                         <li> <app-profile-section></app-profile-section> </li>
                     </ul>
                     
@@ -56,6 +56,7 @@
         </div>
     </div>
 </header>
+
 
 <!-- <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/popper.min.js"></script>

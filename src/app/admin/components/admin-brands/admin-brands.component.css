@@ -1,0 +1,4 @@
+.table-positioner{
+  display: table-cell;
+  vertical-align: middle;
+}

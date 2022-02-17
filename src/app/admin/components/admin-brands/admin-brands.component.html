@@ -1,0 +1,27 @@
+<div class="table-positioner">
+    <p-table *ngIf="dataLoaded" [value]="brands">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Marka Id</th>
+                <th>Marka Adı</th>
+                <th>Güncelle</th>
+                <th>Sil</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-brand>
+            <tr>
+                <td>{{brand.id}}</td>
+                <td>{{brand.name}}</td>
+                <td> <p-button class="p-button-info" icon="pi pi-check" iconPos="left" label="Güncelle" (onClick)="showUpdateDialog(brand)"> </p-button> </td>
+                <td> <button pButton type="button" label="Sil" class="p-button-danger" icon="pi pi-trash" iconPos="left" (onClick)="handleClick($event)" ></button> </td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+    <p-dialog *ngIf="displayUpdateDialog" header="Markayı Güncelle:" [(visible)]="displayUpdateDialog">
+        {{brandToUpdate.id}} bu idsi <br>
+        {{brandToUpdate.name}} bu da name'i
+    </p-dialog>
+
+</div>
+

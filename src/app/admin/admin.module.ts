@@ -1,28 +1,29 @@
-import { AdminRoutingModule } from './admin-routing.module';
+import { ButtonModule } from 'primeng/button';
+import { TableModule } from 'primeng/table';
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DialogModule} from 'primeng/dialog';
+
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AdminBrandsComponent } from './components/admin-brands/admin-brands.component';
+
 
 @NgModule({
   declarations: [
-    DashboardComponent
+    DashboardComponent,
+    AdminBrandsComponent
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule,
-    BrowserModule,
-    ReactiveFormsModule,
-    FormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    
+    RouterModule,
+    TableModule,
+    ButtonModule,
+    DialogModule
+
   ],
   exports:[
-    DashboardComponent,
-  ]  
+    DashboardComponent
+  ]
 })
 export class AdminModule { }

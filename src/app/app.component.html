@@ -1,26 +1,8 @@
-<!-- Admin Sayfası -->
+<app-nav></app-nav>
 
-<div *ngIf="adminLoggedIn" class="container-fluid rac-main-area">
-  <app-nav></app-nav>
-  
-  <div class="row my-3">
-      <router-outlet></router-outlet>      
-  </div>
+<!-- <div class="hero" style="background-image: url('../assets/images/car_city_background.jpg');"></div> -->
+
+<div class="router-position">
+  <router-outlet></router-outlet>
 </div>
 
-<!-- Normal Kullanıcı veya Boş Kullanıcı Sayfası -->
-<div *ngIf="normalUser" class="container-fluid rac-main-area">
-  
-  <app-nav></app-nav>
-
-  <div class="container-fluid">
-    <div class="row">      
-      <div class="col">
-        <div class="row my-3">          
-          <router-outlet></router-outlet>      
-        </div>
-      </div>
-    </div>
-  </div>  
- 
-</div>

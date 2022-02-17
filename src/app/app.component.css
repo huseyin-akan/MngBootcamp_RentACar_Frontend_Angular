@@ -1,10 +1,12 @@
-.container{
-    min-width: 100%;    
-}
-.container-fluid{
-    width: 100%;
-}
-
-.rac-main-area{
+/* .rac-main-area{
     background-color:#192a56;
-} 
+}  */
+
+.hero {
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  z-index:1998
+}
