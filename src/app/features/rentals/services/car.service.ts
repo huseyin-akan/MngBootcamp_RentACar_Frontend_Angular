@@ -1,3 +1,4 @@
+import { UpdateCarModel } from './../models/updateCarModel';
 import { Observable } from 'rxjs/internal/Observable';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -20,8 +21,8 @@ export class CarService {
 
   constructor(private httpClient : HttpClient) { }
 
-  getAllCars() :Observable<PagedListResponseModel<CarListModel>> {
-    return this.httpClient.get<PagedListResponseModel<CarListModel>>(this.apiUrl+"getall")
+  getAllCars(page:number = 0, pageSize : number = 10) :Observable<PagedListResponseModel<CarListModel>> {
+    return this.httpClient.get<PagedListResponseModel<CarListModel>>(`${this.apiUrl}getall?Page=${page}&PageSize=${pageSize}`)
   }
 
   getAllRentableCars(page:number = 0, pageSize : number = 10) :Observable<PagedListResponseModel<CarListModel>> {
@@ -32,6 +33,10 @@ export class CarService {
   //TODO: getbyid controller'da yok ama yazılacak.
   getCarById(id : number) {
     return this.httpClient.get<CarListModel>(this.apiUrl+"get/"+id)
+  }
+
+  updateCar(carToUpdate : UpdateCarModel){
+    return this.httpClient.post<UpdateCarModel>(this.apiUrl+ "update", carToUpdate, this.httpOptions);
   }
 
   // addCar(createCarModel : CreateCarModel){

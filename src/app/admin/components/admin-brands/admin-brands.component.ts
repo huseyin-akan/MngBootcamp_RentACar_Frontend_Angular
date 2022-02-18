@@ -2,6 +2,7 @@ import { BrandListModel } from './../../../features/rentals/models/brandListMode
 import { Component, OnInit } from '@angular/core';
 import { BrandService } from 'src/app/features/rentals/services/brand.service';
 import { AlertifyService } from 'src/app/core/services/alertify.service';
+import { ConfirmationService } from 'primeng/api';
 
 @Component({
   selector: 'app-admin-brands',
@@ -12,7 +13,8 @@ export class AdminBrandsComponent implements OnInit {
 
   constructor(
     private brandService : BrandService,
-    private alertifyService : AlertifyService
+    private alertifyService : AlertifyService,
+    private confirmationService: ConfirmationService
     ) { }
 
   brands: BrandListModel[] = [];
@@ -45,5 +47,27 @@ export class AdminBrandsComponent implements OnInit {
     this.displayUpdateDialog = true;
     this.brandToUpdate = brand;
   }
+
+  deleteBrand(){
+
+  }
+
+  updateBrand(){
+    
+  }
+
+  confirm(event: Event) {
+    this.confirmationService.confirm({
+        target: event.target,
+        message: 'Silme işlemi yapmak istediğinizden emin misiniz?',
+        icon: 'pi pi-exclamation-triangle',
+        accept: () => {
+            this.alertifyService.success("silme işlemi kabul edildi.")
+        },
+        reject: () => {
+          this.alertifyService.error("silme işlemi reddedildi.")
+        }
+    });
+}
 
 }

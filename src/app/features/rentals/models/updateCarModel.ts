@@ -1,6 +1,7 @@
 import { CarState } from "src/app/core/models/enum/carState";
 
-export class CreateCarModel{
+export class UpdateCarModel{
+    id : number;
     modelId : number;
     colorId : number; 
     cityId : number;

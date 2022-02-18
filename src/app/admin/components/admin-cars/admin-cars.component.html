@@ -1,0 +1,99 @@
+<div class="table-positioner">
+    <p-table *ngIf="carDataLoaded" [value]="cars">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Araba Id</th>
+                <th>Marka Adı</th>
+                <th>Model Adı</th>
+                <th>Model Yılı</th>
+                <th>Kilometre</th>
+                <th>Findeks Puanı</th>
+                <th>Plaka</th>
+                <th>Renk</th>
+                <th>Şehir</th>
+                <th>Araç Durumu</th>
+                <th>Güncelle</th>
+                <th>Sil</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-car>
+            <tr>
+                <td>{{car.id}}</td>
+                <td>{{car.brand}}</td>
+                <td>{{car.model}}</td>
+                <td>{{car.modelYear}}</td>
+                <td>{{car.kilometer}}</td>
+                <td>{{car.findexScore}}</td>
+                <td>{{car.plate}}</td>
+                <td>{{car.color}}</td>
+                <td>{{car.city}}</td>
+                <td *ngIf="car.carState == 1"> <p-tag severity="success" value="Müsait"></p-tag> </td>
+                <td *ngIf="car.carState == 2"> <p-tag severity="warning" value="Kirada"></p-tag> </td>
+                <td *ngIf="car.carState == 3"> <p-tag severity="danger" value="Bakımda"></p-tag> </td>
+
+                <td> <p-button class="p-button-info" icon="pi pi-check" iconPos="left" label="Güncelle" (onClick)="showUpdateDialog(car)"> </p-button> </td>
+                <td> <button pButton type="button" label="Sil" class="p-button-danger" icon="pi pi-trash" iconPos="left" (click)="confirm($event)"></button> </td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+    <p-dialog *ngIf="displayUpdateDialog" header="Markayı Güncelle:" [(visible)]="displayUpdateDialog">
+        
+        <form [formGroup]="updateCarForm" (ngSubmit)="updateCar()" class="form-group">
+            
+            <div *ngIf="this.modelsLoaded && this.colorsLoaded && this.citiesLoaded" class="form-outline mb-3">
+                <p-dropdown [options]="models" formControlName="modelId" optionLabel="name" optionValue="id"></p-dropdown>
+            </div>
+
+            <div *ngIf="this.modelsLoaded && this.colorsLoaded && this.citiesLoaded" class="form-outline mb-3">
+                <p-dropdown [options]="cities" formControlName="cityId" optionLabel="name" optionValue="id"></p-dropdown>
+            </div>
+
+            <div *ngIf="this.modelsLoaded && this.colorsLoaded && this.citiesLoaded" class="form-outline mb-3">
+                <p-dropdown [options]="colors" formControlName="colorId" optionLabel="name" optionValue="id"></p-dropdown>
+            </div>
+
+            <div class="form-outline mb-3">
+                <input type="text" placeholder="Araç plakasını giriniz" formControlName="plate" class="form-control" name="plate"/>
+                <div *ngIf="updateCarForm.get('plate').errors?.maxlength" class="alert alert-danger">
+                    Plaka en fazla 9 karakter olmalıdır.
+                </div>
+                <div *ngIf="updateCarForm.get('plate').errors?.required && (updateCarForm.get('plate').dirty || updateCarForm.get('plate').touched) " class="alert alert-danger">
+                    Plaka kısmı zorunludur.
+                </div> 
+            </div>
+
+            <div class="form-outline mb-3">
+                <input type="number" placeholder="Model yılını giriniz" formControlName="modelYear" class="form-control" name="modelYear"/>
+                <div *ngIf="updateCarForm.get('modelYear').errors?.required && (updateCarForm.get('modelYear').dirty || updateCarForm.get('modelYear').touched)" class="alert alert-danger">
+                   Model yılı kısmı zorunludur.
+                </div> 
+            </div>
+
+            <div class="form-outline mb-3">
+                <input type="number" placeholder="Findeks puanını giriniz" formControlName="findexScore" class="form-control" name="findexScore"/>
+                <div *ngIf="updateCarForm.get('findexScore').errors?.required && (updateCarForm.get('findexScore').dirty || updateCarForm.get('findexScore').touched)" class="alert alert-danger">
+                    Minimum findeks numarası kısmı zorunludur.
+                </div> 
+            </div>
+
+            <div class="form-outline mb-3">
+                <input type="number" placeholder="Araç kilometresini giriniz" formControlName="kilometer" class="form-control" name="kilometer"/>
+                <div *ngIf="updateCarForm.get('kilometer').errors?.required && (updateCarForm.get('kilometer').dirty || updateCarForm.get('kilometer').touched)" class="alert alert-danger">
+                    Araç kilometresi kısmı zorunludur.
+                </div> 
+            </div>
+
+            <div class="form-outline mb-3">
+                <p-dropdown [options]="carStatesEnum" formControlName="carState" optionLabel="name" optionValue="id"></p-dropdown>
+            </div>
+        
+            <button type="submit" class="btn btn-primary" [disabled]="updateCarForm.invalid"> Güncelle</button>
+        
+        </form>
+
+    </p-dialog>
+
+    <p-confirmPopup></p-confirmPopup>
+
+</div>

@@ -19,4 +19,12 @@ export class BrandService {
     let newPath = `${this.apiUrl}getall?Page=${page}&PageSize=${size}`;
     return this.httpClient.get<PagedListResponseModel<BrandListModel>>(newPath);
   }
+
+  deleteBrand(){
+
+  }
+
+  updateBrand(){
+    
+  }
 }

@@ -1,13 +1,19 @@
 import { CarState } from "src/app/core/models/enum/carState";
 
-export interface CarListModel{
+export class CarListModel{
     id : number
-    modelYear : number
-    dailyPrice : number
-    brand : string
     model: string
-    imageUrl : string
+    modelId: number
     color : string
+    colorId : number
     city : string
+    cityId : number
+    plate : string
+    modelYear : number
+    findexScore : number
+    kilometer : number
+    dailyPrice : number
+    imageUrl : string
+    brand : string    
     carState : CarState
 }

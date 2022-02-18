@@ -1,4 +1,4 @@
-export interface ModelListModel{
+export class ModelListModel{
     id : number;
     name : string;
     brand : string;

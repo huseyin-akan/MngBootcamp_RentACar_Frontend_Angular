@@ -14,7 +14,7 @@ export class ModelService {
 
   constructor(private httpClient : HttpClient) { }
 
-  getBrands(page: number, size: number):Observable<PagedListResponseModel<ModelListModel>>{
+  getModels(page: number = 0, size: number = 100):Observable<PagedListResponseModel<ModelListModel>>{
     let newPath = `${this.apiUrl}getall2?Page=${page}&PageSize=${size}`;
     return this.httpClient.get<PagedListResponseModel<ModelListModel>>(newPath);
   }

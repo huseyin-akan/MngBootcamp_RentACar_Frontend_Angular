@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ButtonModule } from 'primeng/button';
 import { DataViewModule } from 'primeng/dataview';
 import { PanelModule } from 'primeng/panel';
+import { TagModule } from 'primeng/tag';
 import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
 import { RippleModule } from 'primeng/ripple';
@@ -29,6 +30,8 @@ import { ErrorComponent } from './features/main/components/error/error.component
 import { RadioButtonModule} from 'primeng/radiobutton';
 import { AdminModule } from './admin/admin.module';
 import { TableModule} from 'primeng/table';
+import { ConfirmPopupModule} from 'primeng/confirmpopup';
+import { ConfirmationService } from 'primeng/api';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -55,11 +58,13 @@ export function tokenGetter() {
     BrowserAnimationsModule,
     RadioButtonModule,
     ButtonModule,
+    ConfirmPopupModule,
     DataViewModule,
     RatingModule,
     DialogModule,
     RippleModule,
     TableModule,
+    TagModule,
     PanelModule,
     InputTextModule,
     CalendarModule,
@@ -73,7 +78,7 @@ export function tokenGetter() {
       }
     })
   ],
-  providers: [],
+  providers: [ConfirmationService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
