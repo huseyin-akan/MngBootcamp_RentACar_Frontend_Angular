@@ -1,3 +1,4 @@
+import { AddCarComponent } from './admin/components/add-car/add-car.component';
 import { AdminCarsComponent } from './admin/components/admin-cars/admin-cars.component';
 import { UserGuard } from './core/guards/user.guard';
 import { RegisterComponent } from './features/main/components/register/register.component';
@@ -18,9 +19,10 @@ const routes: Routes = [
   {path: "cars", component : CarComponent, canActivate: [UserGuard]},
   { path: 'adminalThings', component: DashboardComponent , canActivate: [AdminGuard],
       children :[
-          { path: 'dashboard', component: DashboardComponent, canActivate: [AdminGuard] },
-          { path: 'brands', component: AdminBrandsComponent, canActivate: [AdminGuard] },
-          { path: 'cars', component: AdminCarsComponent, canActivate: [AdminGuard] },
+          { path: 'dashboard', component: DashboardComponent },
+          { path: 'brands', component: AdminBrandsComponent},
+          { path: 'cars', component: AdminCarsComponent },
+          { path: 'addcar', component: AddCarComponent },
         ]
   },
 

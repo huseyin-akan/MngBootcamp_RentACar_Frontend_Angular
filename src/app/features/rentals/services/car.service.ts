@@ -1,10 +1,14 @@
-import { UpdateCarModel } from './../models/updateCarModel';
 import { Observable } from 'rxjs/internal/Observable';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { PagedListResponseModel } from 'src/app/core/models/pagedListResponseModel';
-import { CarListModel } from '../models/carListModel';
+import { CarListModel } from '../models/carModels/carListModel';
+import { UpdateCarModel } from '../models/carModels/updateCarModel';
+import { CreateCarModel } from '../models/carModels/createCarModel';
+import { CreatedCarDto } from '../models/carModels/createdCarDto';
+import { ResponseModel } from 'src/app/core/models/responseModel';
+
 
 @Injectable({
   providedIn: 'root'
@@ -36,14 +40,19 @@ export class CarService {
   }
 
   updateCar(carToUpdate : UpdateCarModel){
-    return this.httpClient.post<UpdateCarModel>(this.apiUrl+ "update", carToUpdate, this.httpOptions);
+    return this.httpClient.put<UpdateCarModel>(this.apiUrl+ "update", carToUpdate, this.httpOptions);
   }
 
-  // addCar(createCarModel : CreateCarModel){
-  //   return this.httpClient.post<ResponseModel>(
-  //     this.apiUrl + 'add',
-  //     createCarModel,
-  //     this.httpOptions
-  //   );
-  // }
+  deleteCar(id : number){
+    return this.httpClient.delete<ResponseModel>(this.apiUrl+ "delete/"+id);
+  }
+
+  addCar(createCarModel : CreateCarModel){
+
+    return this.httpClient.post<CreatedCarDto>(
+      this.apiUrl + 'add',
+      createCarModel,
+      this.httpOptions
+    );
+  }
 }

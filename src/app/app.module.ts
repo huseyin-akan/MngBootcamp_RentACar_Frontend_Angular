@@ -32,6 +32,8 @@ import { AdminModule } from './admin/admin.module';
 import { TableModule} from 'primeng/table';
 import { ConfirmPopupModule} from 'primeng/confirmpopup';
 import { ConfirmationService } from 'primeng/api';
+import { CardModule } from 'primeng/card';
+
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -64,6 +66,7 @@ export function tokenGetter() {
     DialogModule,
     RippleModule,
     TableModule,
+    CardModule,
     TagModule,
     PanelModule,
     InputTextModule,

@@ -21,9 +21,9 @@ const id = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier
 export class AuthService {
 
   public isAdminLogged = new BehaviorSubject(false);
-  public isLogged = new BehaviorSubject(false);
-  public nameSurname = new BehaviorSubject(this.getNameSurname());
+  public isLogged = new BehaviorSubject(false);  
   public userName = new BehaviorSubject(this.getUserName());
+  public nameSurname = new BehaviorSubject(this.getNameSurname());
 
   private userSubject: BehaviorSubject<User>;
   public user: Observable<User>;

@@ -2,5 +2,12 @@
     display: table-cell;
     vertical-align: middle;
     padding-left: 10rem;
-  }
+}
+
+.add-button-container{
+  margin-top : 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
   

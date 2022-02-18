@@ -1,0 +1,61 @@
+<div class="table-positioner">
+    <p-card header="Araç Ekle:" subheader="Card Subheader" [style]="{width: '360px'}" styleClass="p-card-shadow">
+
+        <form [formGroup]="addCarForm" class="form-group">
+                
+            <div *ngIf="this.modelsLoaded && this.colorsLoaded && this.citiesLoaded" class="form-outline mb-3">
+                <p-dropdown [options]="models" formControlName="modelId" optionLabel="name" optionValue="id"></p-dropdown>
+            </div>
+        
+            <div *ngIf="this.modelsLoaded && this.colorsLoaded && this.citiesLoaded" class="form-outline mb-3">
+                <p-dropdown [options]="cities" formControlName="cityId" optionLabel="name" optionValue="id"></p-dropdown>
+            </div>
+        
+            <div *ngIf="this.modelsLoaded && this.colorsLoaded && this.citiesLoaded" class="form-outline mb-3">
+                <p-dropdown [options]="colors" formControlName="colorId" optionLabel="name" optionValue="id"></p-dropdown>
+            </div>
+        
+            <div class="form-outline mb-3">
+                <input type="text" placeholder="Araç plakasını giriniz" formControlName="plate" class="form-control" name="plate"/>
+                <!-- <div *ngIf="addCarForm.get('plate').errors?.maxlength" class="alert alert-danger">
+                    Plaka en fazla 9 karakter olmalıdır.
+                </div>
+                <div *ngIf="addCarForm.get('plate').errors?.required && (addCarForm.get('plate').dirty || addCarForm.get('plate').touched) " class="alert alert-danger">
+                    Plaka kısmı zorunludur.
+                </div>  -->
+            </div>
+        
+            <div class="form-outline mb-3">
+                <input type="number" placeholder="Model yılını giriniz" formControlName="modelYear" class="form-control" name="modelYear"/>
+                <!-- <div *ngIf="addCarForm.get('modelYear').errors?.required && (addCarForm.get('modelYear').dirty || addCarForm.get('modelYear').touched)" class="alert alert-danger">
+                   Model yılı kısmı zorunludur.
+                </div>  -->
+            </div>
+        
+            <div class="form-outline mb-3">
+                <input type="number" placeholder="Findeks puanını giriniz" formControlName="findexScore" class="form-control" name="findexScore"/>
+                <!-- <div *ngIf="addCarForm.get('findexScore').errors?.required && (addCarForm.get('findexScore').dirty || addCarForm.get('findexScore').touched)" class="alert alert-danger">
+                    Minimum findeks numarası kısmı zorunludur.
+                </div>  -->
+            </div>
+        
+            <div class="form-outline mb-3">
+                <input type="number" placeholder="Araç kilometresini giriniz" formControlName="kilometer" class="form-control" name="kilometer"/>
+                <!-- <div *ngIf="addCarForm.get('kilometer').errors?.required && (addCarForm.get('kilometer').dirty || addCarForm.get('kilometer').touched)" class="alert alert-danger">
+                    Araç kilometresi kısmı zorunludur.
+                </div>  -->
+            </div>
+        
+        </form>
+    
+        <ng-template pTemplate="footer">
+            <p-button label="Araç Ekle" icon="pi pi-check" [disabled]="addCarForm.invalid" (click)="addCar()"></p-button>
+            <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" routerLink="/adminalThings/cars" [style]="{'margin-left': '.5em'}"></p-button>
+        </ng-template>
+    </p-card>
+</div>
+
+
+
+
+

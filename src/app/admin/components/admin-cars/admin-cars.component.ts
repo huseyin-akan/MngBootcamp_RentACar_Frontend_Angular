@@ -1,17 +1,17 @@
 import { CityService } from './../../../features/rentals/services/city.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModelService } from './../../../features/rentals/services/model.service';
-import { CarListModel } from './../../../features/rentals/models/carListModel';
 import { CarService } from './../../../features/rentals/services/car.service';
 import { Component, OnInit } from '@angular/core';
 import { AlertifyService } from 'src/app/core/services/alertify.service';
 import { ConfirmationService } from 'primeng/api';
 import { ColorListModel } from 'src/app/features/rentals/models/colorListModel';
 import { ModelListModel } from 'src/app/features/rentals/models/modelListModel';
-import { UpdateCarModel } from 'src/app/features/rentals/models/updateCarModel';
 import { ColorService } from 'src/app/features/rentals/services/color.service';
 import { CityListModel } from 'src/app/features/rentals/models/cityListModel';
 import { CarState } from 'src/app/core/models/enum/carState';
+import { CarListModel } from 'src/app/features/rentals/models/carModels/carListModel';
+import { UpdateCarModel } from 'src/app/features/rentals/models/carModels/updateCarModel';
 
 @Component({
   selector: 'app-admin-cars',
@@ -161,25 +161,29 @@ export class AdminCarsComponent implements OnInit {
         });
       }
     }
-
-    addCar(){
-
-    }
   
-    deleteCar(){
-  
+    deleteCar(id: number){
+      this.carService.deleteCar(id).subscribe({
+        next : (response) =>{
+          this.alertifyService.success("Araba silme işlemi başarılı oldu.")
+          this.getCars();
+        },
+        error: (err) => {
+          this.alertifyService.success("Araba silme işlemi başarısız oldu.")
+        }
+      });
     }
 
-    confirm(event: Event) {
+    confirm(id: number) {
       this.confirmationService.confirm({
           target: event.target,
           message: 'Silme işlemi yapmak istediğinizden emin misiniz?',
           icon: 'pi pi-exclamation-triangle',
           accept: () => {
-              this.alertifyService.success("silme işlemi kabul edildi.")
+              this.deleteCar(id);
           },
           reject: () => {
-            this.alertifyService.error("silme işlemi reddedildi.")
+            this.alertifyService.error("Silme işlemi reddedildi.")
           }
       });
   }

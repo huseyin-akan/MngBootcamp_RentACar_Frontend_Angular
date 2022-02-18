@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { DialogModule} from 'primeng/dialog';
 import { ConfirmPopupModule} from 'primeng/confirmpopup';
 import { TagModule } from 'primeng/tag';
+import { CardModule} from 'primeng/card';
 
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AdminBrandsComponent } from './components/admin-brands/admin-brands.component';
@@ -14,13 +15,15 @@ import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
+import { AddCarComponent } from './components/add-car/add-car.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
     AdminBrandsComponent,
-    AdminCarsComponent
+    AdminCarsComponent,
+    AddCarComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,8 @@ import { BrowserModule } from '@angular/platform-browser';
     ButtonModule,
     DropdownModule,
     DialogModule,
-    ConfirmPopupModule
+    ConfirmPopupModule,
+    CardModule
   ],
   exports:[
     DashboardComponent

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {PrimeNGConfig, SelectItem} from 'primeng/api';
 import { CarService } from 'src/app/features/rentals/services/car.service';
-import { CarListModel } from '../../models/carListModel';
+import { CarListModel } from '../../models/carModels/carListModel';
 
 
 @Component({
