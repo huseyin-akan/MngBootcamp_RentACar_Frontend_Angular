@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertifyService } from 'src/app/core/services/alertify.service';
 import { CityListModel } from 'src/app/features/rentals/models/cityListModel';
-import { ColorListModel } from 'src/app/features/rentals/models/colorListModel';
+import { ColorListModel } from 'src/app/features/rentals/models/colorModels/colorListModel';
 import { ModelListModel } from 'src/app/features/rentals/models/modelListModel';
 import { CarService } from 'src/app/features/rentals/services/car.service';
 import { CityService } from 'src/app/features/rentals/services/city.service';

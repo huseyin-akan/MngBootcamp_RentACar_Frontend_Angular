@@ -5,7 +5,7 @@ import { CarService } from './../../../features/rentals/services/car.service';
 import { Component, OnInit } from '@angular/core';
 import { AlertifyService } from 'src/app/core/services/alertify.service';
 import { ConfirmationService } from 'primeng/api';
-import { ColorListModel } from 'src/app/features/rentals/models/colorListModel';
+import { ColorListModel } from 'src/app/features/rentals/models/colorModels/colorListModel';
 import { ModelListModel } from 'src/app/features/rentals/models/modelListModel';
 import { ColorService } from 'src/app/features/rentals/services/color.service';
 import { CityListModel } from 'src/app/features/rentals/models/cityListModel';

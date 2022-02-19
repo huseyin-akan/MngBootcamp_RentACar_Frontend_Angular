@@ -16,6 +16,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { AddCarComponent } from './components/add-car/add-car.component';
+import { AdminColorsComponent } from './components/admin-colors/admin-colors.component';
+import { AddColorComponent } from './components/add-color/add-color.component';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { AddCarComponent } from './components/add-car/add-car.component';
     DashboardComponent,
     AdminBrandsComponent,
     AdminCarsComponent,
-    AddCarComponent
+    AddCarComponent,
+    AdminColorsComponent,
+    AddColorComponent
   ],
   imports: [
     BrowserModule,

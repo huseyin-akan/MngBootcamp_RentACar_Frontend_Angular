@@ -1,0 +1,25 @@
+<div class="table-positioner">
+    <p-card header="Araç Ekle:" subheader="Card Subheader" [style]="{width: '360px'}" styleClass="p-card-shadow">
+
+        <form [formGroup]="addColorForm" class="form-group">                
+        
+            <div class="form-outline mb-3">
+                <input type="text" placeholder="Eklemek istediğiniz rengi giriniz" formControlName="name" class="form-control" name="name"/>
+                <!-- <div *ngIf="addColorForm.get('name').errors?.['required'] && (addColorForm.get('name').dirty || addColorForm.get('name').touched) " class="alert alert-danger">
+                    Plaka kısmı zorunludur.
+                </div>  -->
+            </div>
+
+        </form>
+    
+        <ng-template pTemplate="footer">
+            <p-button label="Renk Ekle" icon="pi pi-check" [disabled]="addColorForm.invalid" (click)="addColor()"></p-button>
+            <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" routerLink="/adminalThings/colors" [style]="{'margin-left': '.5em'}"></p-button>
+        </ng-template>
+    </p-card>
+</div>
+
+
+
+
+
