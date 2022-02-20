@@ -1,0 +1,89 @@
+<!-- Extras Select Tab-->
+<p-card>
+    <ng-template pTemplate="title">
+        Kredi Kart Bilgilerini Giriniz:
+    </ng-template>
+
+    <ng-template pTemplate="content" style="margin-top:0">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-6">
+                        <form #paymentForm="ngForm">
+    
+                            <div class="mb-3">
+                                <input type="text" placeholder="Kredi kart üzerindeki ad soyad"
+                                    #cardHolder="ngModel"
+                                    [(ngModel)]="createPaymentModel.cardHolder"
+                                    class="form-control" id="cardHolder" name="cardHolder" />
+                            </div>
+    
+                            <div class="mb-3">
+                                <input type="text" placeholder="Kart üzerindeki 16 haneyi giriniz"
+                                    #creditCardNo="ngModel"
+                                    [(ngModel)]="createPaymentModel.creditCardNo"
+                                    class="form-control" id="creditCardNo" name="creditCardNo" required
+                                    maxlength="16" />
+                                <div *ngIf="creditCardNo.invalid && creditCardNo.dirty"
+                                    class="alert alert-danger">
+                                    Kredi kart bilgisi kısmı zorunludur.
+                                </div>
+                            </div>
+    
+                            <div class="mb-3">
+                                <input type="text" placeholder="Geçerlilik tarihini giriniz"
+                                    #validDate="ngModel"
+                                    [(ngModel)]="createPaymentModel.validDate"
+                                    class="form-control" id="validDate" name="validDate" maxlength="4" />
+                            </div>
+    
+                            <div class="mb-3">
+                                <input type="password"
+                                    placeholder="Kartın arkasındaki 3 haneli CVC rakamlarını giriniz"
+                                    #cvc="ngModel"
+                                    [(ngModel)]="createPaymentModel.cvc"
+                                    class="form-control" id="cvc" name="cvc" required />
+                                <div *ngIf="cvc.invalid && cvc.dirty" class="alert alert-danger">
+                                    CVC kısmı zorunludur.
+                                </div>
+                            </div>
+                            <div class="p-field-checkbox">
+                                <p-checkbox [(ngModel)]="saveCardChecked" binary="true" name="cb_savecard"
+                                    inputId="cb_savecard"></p-checkbox>
+                                <label class="cb_savecard" for="cb_savecard">Kart Bilgilerimi Kaydet</label>
+                            </div>
+                            <br>
+    
+                            <div class="mb-3">
+                                <input type="text" placeholder="Promosyon Kodu" #promotionCode="ngModel"
+                                    [(ngModel)]="createPaymentModel.code" class="form-control"
+                                    id="promotionCode" name="promotionCode" />
+                            </div>
+    
+                        </form>
+                    </div>
+                    <div class="col-6">
+                        <img src="https://t3.ftcdn.net/jpg/03/95/04/64/360_F_395046410_zPvTifXj16lprkYLFSN5Yeweaquzc4CR.jpg"
+                            alt="image" style="width: 100%">
+                        <div class="card_card_holder">
+                            {{createPaymentModel.cardHolder}}</div>
+                        <div class="card_card_number">
+                            {{createPaymentModel.creditCardNo |creditCardFormat}}
+                        </div>
+                        <div class="card_validity_date">
+                            {{createPaymentModel.validDate |cardDateFormat}}
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <div class="d-flex justify-content-start">
+            <p-button label="Back" (onClick)="prevPage()" icon="pi pi-angle-left"></p-button>
+        </div>
+        <!-- [disabled]="!rentalForm.valid" -->
+    </ng-template>
+</p-card>

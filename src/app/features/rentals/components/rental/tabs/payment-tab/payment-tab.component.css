@@ -1,0 +1,36 @@
+.card {
+    padding: 2rem;
+    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    margin-bottom: 2rem;
+}
+
+.card_card_holder{
+  position: absolute;
+  bottom:36%;
+  left: 60%;
+  color : white;
+  font-size: x-large;
+}
+
+.card_card_number{
+  position: absolute;
+  bottom:30%;
+  left: 60%;
+  color : white;
+  opacity: 0.9;
+  font-size: large;
+}
+
+.card_validity_date{
+  position: absolute;
+  bottom:62%;
+  left: 80%;
+  color : white;
+  opacity: 0.9;
+  font-size: large;
+}
+
+.cb_savecard{
+    margin-left:1rem;
+}

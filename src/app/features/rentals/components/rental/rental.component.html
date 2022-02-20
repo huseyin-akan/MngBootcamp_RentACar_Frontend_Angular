@@ -4,7 +4,7 @@
         <div class="col-9">
             <!--Steps-->            
             <div class="card">
-                <p-steps [model]="items" [readonly]="true"></p-steps>
+                <p-steps [model]="items" [readonly]="true" ></p-steps>
             </div>
             <!--Step Content-->
             <div class="card">
@@ -13,70 +13,69 @@
         </div>
 
         <div class="col-3">
-            <table class="table yapilan-secimler-ekrani">
-                <thead>
-                    <tr>
-                        <th> Yapılan Seçimler:</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td> Kiralama Tarihi: </td>
-                        <td id="ypt_rent_date"> {{selectedRentalOps.rentDate |date: 'dd.LL.y'}}</td>
-                    </tr>
-                    <tr>
-                        <td> Teslim Tarihi: </td>
-                        <td id="ypt_return_date">{{selectedRentalOps.returnDate |date: 'dd.LL.y'}}</td>
-                    </tr>
-                    <tr>
-                        <td> Kiralanacak Şehir: </td>
-                        <td id="ypt_rent_city"> {{selectedRentalOps.rentCity}} </td>
-                    </tr>
-                    <tr>
-                        <td> Teslim Edilecek Şehir: </td>
-                        <td id="ypt_returned_city"> {{selectedRentalOps.returnCity}}</td>
-                    </tr>
-                    <tr>
-                        <td> Araç: </td>
-                        <td *ngIf="selectedRentalOps.selectedCar.id"> {{selectedRentalOps.selectedCar.brand + " " + selectedRentalOps.selectedCar.model}}</td>
-                        <td *ngIf="!selectedRentalOps.selectedCar.id"> </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table yapilan-secimler-ekrani">
-                <thead>
-                    <tr>
-                        <th> Ek Hizmetler:</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let adSer of selectedRentalOps.selectedASs">
-                        <td> {{adSer.description}} </td>
-                        <td> {{adSer.price}}₺</td>
-                    </tr>
-                    <div *ngIf="selectedRentalOps.selectedASs.length == 0" class="alert alert-danger"> Ek servis seçimi
-                        yapılmadı</div>
-                </tbody>
-            </table>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th> Toplam:</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="ypt_total_sum">₺{{selectedRentalOps.totalSum}}</td>
-                    </tr>
-                </tbody>
-            </table>
-            
-            <!-- <button pButton label="Kiralamayı Tamamla" icon="pi pi-credit-card" type="button" class="p-button-success"
-                [disabled]="wrongDateSelection || paymentForm.invalid" (click)="rentCar()"></button> -->
-            <button pButton label="Kiralamayı Tamamla" icon="pi pi-credit-card" type="button" class="p-button-success"></button>
-
+            <div class="card">
+                <table class="table yapilan-secimler-ekrani">
+                    <thead>
+                        <tr>
+                            <th> Yapılan Seçimler:</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> Kiralama Tarihi: </td>
+                            <td id="ypt_rent_date"> {{selectedRentalOps.rentDate |date: 'dd.LL.y'}}</td>
+                        </tr>
+                        <tr>
+                            <td> Teslim Tarihi: </td>
+                            <td id="ypt_return_date">{{selectedRentalOps.returnDate |date: 'dd.LL.y'}}</td>
+                        </tr>
+                        <tr>
+                            <td> Kiralanacak Şehir: </td>
+                            <td id="ypt_rent_city"> {{selectedRentalOps.rentCity}} </td>
+                        </tr>
+                        <tr>
+                            <td> Teslim Edilecek Şehir: </td>
+                            <td id="ypt_returned_city"> {{selectedRentalOps.returnCity}}</td>
+                        </tr>
+                        <tr>
+                            <td> Araç: </td>
+                            <td *ngIf="selectedRentalOps.selectedCar.id"> {{selectedRentalOps.selectedCar.brand + " " + selectedRentalOps.selectedCar.model}}</td>
+                            <td *ngIf="!selectedRentalOps.selectedCar.id"> </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table yapilan-secimler-ekrani">
+                    <thead>
+                        <tr>
+                            <th> Ek Hizmetler:</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let adSer of selectedRentalOps.selectedASs">
+                            <td> {{adSer.description}} </td>
+                            <td> {{adSer.price}}₺</td>
+                        </tr>
+                        <div *ngIf="selectedRentalOps.selectedASs.length == 0" class="alert alert-danger"> Ek servis seçimi
+                            yapılmadı</div>
+                    </tbody>
+                </table>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th> Toplam:</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="ypt_total_sum">₺{{selectedRentalOps.totalSum}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <!-- <button pButton label="Kiralamayı Tamamla" icon="pi pi-credit-card" type="button" class="p-button-success"
+                    [disabled]="wrongDateSelection || paymentForm.invalid" (click)="rentCar()"></button> -->
+                <button pButton label="Kiralamayı Tamamla" icon="pi pi-credit-card" type="button" class="p-button-success"></button>
+            </div>
         </div>
     </div>
 </div>
-
-<button class="btn btn-primary" (click)="denemasyon()"> Denemasyon yapıyoruz</button>

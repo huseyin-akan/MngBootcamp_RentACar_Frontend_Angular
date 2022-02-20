@@ -40,6 +40,8 @@ import { CarSelectTabComponent } from './features/rentals/components/rental/tabs
 import { CustomerTabComponent } from './features/rentals/components/rental/tabs/customer-tab/customer-tab.component';
 import { ExtrasTabComponent } from './features/rentals/components/rental/tabs/extras-tab/extras-tab.component';
 import { PaymentTabComponent } from './features/rentals/components/rental/tabs/payment-tab/payment-tab.component';
+import { CardDateFormatPipe } from './core/pipes/card-date-format.pipe';
+import { CreditCardFormatPipe } from './core/pipes/credit-card-format.pipe';
 
 
 export function tokenGetter() {
@@ -63,7 +65,9 @@ export function tokenGetter() {
     CarSelectTabComponent,
     CustomerTabComponent,
     ExtrasTabComponent,
-    PaymentTabComponent],
+    PaymentTabComponent,
+    CardDateFormatPipe,
+    CreditCardFormatPipe],
   imports: [
     BrowserModule,
     AppRoutingModule,
