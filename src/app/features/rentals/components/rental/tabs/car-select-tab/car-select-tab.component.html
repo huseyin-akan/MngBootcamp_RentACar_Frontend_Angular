@@ -1,0 +1,58 @@
+<!-- Car Select Tab-->
+<p-card>
+    <ng-template pTemplate="title">
+        Araç Seçimi Yapınız:
+    </ng-template>
+
+    <ng-template pTemplate="content" style="margin-top:0">
+        <div class="card">
+            <p-dataView #dv [value]="cars" [paginator]="true" [rows]="5" filterBy="name"
+                [sortField]="sortField" [sortOrder]="sortOrder" layout="list">
+                <ng-template pTemplate="header">
+                    <div class="flex flex-column md:flex-row md:justify-content-between">
+                        <p-dropdown [options]="sortOptions" [(ngModel)]="sortKey"
+                            placeholder="Sort By Price" (onChange)="onSortChange($event)"
+                            styleClass="mb-2 md:mb-0"></p-dropdown>
+                        <span class="p-input-icon-left mb-2 md:mb-0">
+                            <i class="pi pi-search"></i>
+                            <input type="search" pInputText placeholder="Search by Name"
+                                (input)="dv.filter($event.target.value)">
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template let-car pTemplate="listItem">
+                    <div class="col-12">
+                        <div class="product-list-item">
+                            <img [src]="car.imageUrl" [alt]="car.brand" />
+                            <div class="product-list-detail">
+                                <div class="product-name">{{car.brand}}</div>
+                                <div class="product-description">{{car.description}}</div>
+                                <p-rating [ngModel]="car.findexScore" [readonly]="true" [cancel]="false">
+                                </p-rating>
+                                <i class="pi pi-tag product-category-icon"></i><span
+                                    class="product-category">{{car.modelName}}</span>
+                            </div>
+                            <div class="product-list-action">
+                                <span class="product-price">₺{{car.dailyPrice}}</span>
+                                <button *ngIf="car.id == selectedCar" pButton label="Seçildi"
+                                    icon="pi pi-shopping-cart" type="button" id="btn_car_select_{{car.id}}"
+                                    class="p-button-success" (click)="selectCar(car.id)"></button>
+                                <button *ngIf="car.id != selectedCar" pButton label="Seç"
+                                    icon="pi pi-shopping-cart" type="button" id="btn_car_select_{{car.id}}"
+                                    class="p-button-primary" (click)="selectCar(car.id)"></button>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </p-dataView>
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <div class="d-flex justify-content-between">
+            <p-button label="Back" (onClick)="prevPage()" icon="pi pi-angle-left"></p-button>
+            <p-button label="Next"  (onClick)="nextPage()" icon="pi pi-angle-right" iconPos="right"></p-button>
+        </div>
+        <!-- [disabled]="!rentalForm.valid" -->
+    </ng-template>
+</p-card>

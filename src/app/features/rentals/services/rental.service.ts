@@ -12,6 +12,9 @@ export class RentalService {
   private selectedRentalOpsSubject : BehaviorSubject<SelectedRentalOps>;
   public selectedRentalOps : Observable<SelectedRentalOps>;
 
+  private dayDiff : number = 0;
+  private dayForRental : number = 0;
+
   constructor() {
     this.selectedRentalOpsSubject = new BehaviorSubject<SelectedRentalOps>(this.selectedRentalOpsObj);
     this.selectedRentalOps = this.selectedRentalOpsSubject.asObservable();
@@ -29,11 +32,13 @@ export class RentalService {
 
   setReturnDate(returnDate : Date){
     this.selectedRentalOpsObj.returnDate = returnDate;
+    this.updateDayDiff();
     this.updateObservable();
   }
 
   setRentCity(rentCity : string){
     this.selectedRentalOpsObj.rentCity = rentCity;
+    this.updateDayDiff();
     this.updateObservable();
   }
 
@@ -51,12 +56,21 @@ export class RentalService {
 
   }
 
-  updateTotalSum(){
+  updateTotalSum(){    
     
   }
 
   private updateObservable(){
     this.selectedRentalOpsSubject.next(this.selectedRentalOpsObj);
+  }
+
+  private updateDayDiff(){
+    this.dayDiff = (this.selectedRentalOpsObj.returnDate.getTime() - this.selectedRentalOpsObj.rentDate.getTime() )
+    if(this.dayDiff == 0){
+      this.dayForRental = 1;
+    }else{
+      this.dayForRental= Math.ceil( this.dayDiff / (1000 * 60 * 60 * 24)); 
+    }
   }
 
 }

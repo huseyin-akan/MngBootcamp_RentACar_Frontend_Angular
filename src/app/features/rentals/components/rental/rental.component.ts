@@ -20,10 +20,7 @@ export class RentalComponent implements OnInit {
   
   items: MenuItem[];
   subscription : Subscription;
-  selectedRentalOps : SelectedRentalOps;  
-  
-  dayForRental: number = 0;
-  wrongDateSelection: boolean = false;
+  selectedRentalOps : SelectedRentalOps; 
 
   constructor(
     private primengConfig: PrimeNGConfig,
@@ -34,12 +31,12 @@ export class RentalComponent implements OnInit {
   ngOnInit(): void {
 
     this.items = [
-      { label: 'Tarih Seçim' },
-      { label: 'Araç Seçim' },
-      { label: 'Ek Hizmet'},
-      { label: 'Kayıt'},
-      { label: 'Ödeme'},
-      { label: 'Fatura'}
+      { label: 'Tarih Seçim', routerLink : "/rental/select-date" },
+      { label: 'Araç Seçim', routerLink : "/rental/select-car" },
+      { label: 'Ek Hizmet', routerLink : "/rental/select-casd"},
+      { label: 'Kayıt', routerLink : "/rental/select-asd"},
+      { label: 'Ödeme', routerLink : "/rental/select-casdar"},
+      { label: 'Fatura', routerLink : "/rental/select-casdar"}
     ];
 
     this.primengConfig.ripple = true;
@@ -49,7 +46,6 @@ export class RentalComponent implements OnInit {
         this.selectedRentalOps = response;
       }
     )
-
   }
 
   denemasyon(){
