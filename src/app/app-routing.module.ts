@@ -16,6 +16,7 @@ import { AdminBrandsComponent } from './admin/components/admin-brands/admin-bran
 import { AdminGuard } from './core/guards/admin.guard';
 import { CarComponent } from './features/rentals/components/car/car.component';
 import { AddColorComponent } from './admin/components/add-color/add-color.component';
+import { ExtrasTabComponent } from './features/rentals/components/rental/tabs/extras-tab/extras-tab.component';
 
 const routes: Routes = [
   { path: "login" , component : LoginComponent},
@@ -36,6 +37,7 @@ const routes: Routes = [
     children : [
       {path : 'select-date', component : RentalTabComponent },
       {path : 'select-car', component : CarSelectTabComponent },
+      {path : 'select-extra', component : ExtrasTabComponent },
     ]},
 
   //boş veride ana sayfaya gönder.

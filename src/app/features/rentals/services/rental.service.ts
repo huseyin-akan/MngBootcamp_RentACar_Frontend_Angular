@@ -1,3 +1,4 @@
+import { CarListModel } from 'src/app/features/rentals/models/carModels/carListModel';
 import { AdditionalService } from './../models/additionalServices/additionalService';
 import { SelectedRentalOps } from './../models/rentalModels/selectedRentalOps';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -20,9 +21,13 @@ export class RentalService {
     this.selectedRentalOps = this.selectedRentalOpsSubject.asObservable();
   }
 
-  setSelectedCar(selectedCar : string){
+  setSelectedCar(selectedCar : CarListModel){
     this.selectedRentalOpsObj.selectedCar = selectedCar;
     this.updateObservable();
+  }
+
+  getSelectedCar(){
+    return this.selectedRentalOpsObj.selectedCar;
   }
 
   setRentDate(rentDate : Date){
