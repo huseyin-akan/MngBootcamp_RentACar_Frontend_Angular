@@ -1,3 +1,4 @@
+import { AlertifyService } from 'src/app/core/services/alertify.service';
 import { Subscription } from 'rxjs';
 import { CityService } from './../../services/city.service';
 import { CarService } from './../../services/car.service';
@@ -28,7 +29,8 @@ export class RentalComponent implements OnInit {
     private primengConfig: PrimeNGConfig,
     private activatedRoute: ActivatedRoute,
     private rentalService : RentalService,
-    private authService : AuthService
+    private authService : AuthService,
+    private alertifyService : AlertifyService
   ) {}
 
   ngOnInit(): void {
@@ -56,8 +58,19 @@ export class RentalComponent implements OnInit {
     })
   }
 
-  denemasyon(){
-    //this.rentalService.setSelectedCar("Husoka");
+  rentCar(){
+    this.rentalService.rentCar().subscribe(
+      {
+        next : (response) => {
+          this.alertifyService.success("Kiralama İşlemi Başarılı oldu");
+          console.log(response);
+        },
+        error : (err) => {
+          this.alertifyService.error("Kiralama İşlemi başarısız oldu");
+          console.log(err);
+        }
+      }
+    );
   }
 
  

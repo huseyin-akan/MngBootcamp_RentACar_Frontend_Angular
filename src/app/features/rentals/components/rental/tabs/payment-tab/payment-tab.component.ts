@@ -1,3 +1,4 @@
+import { AlertifyService } from 'src/app/core/services/alertify.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { CreateCreditCardInfosModel } from 'src/app/features/rentals/models/rentalModels/createCreditCardInfosModel';
@@ -12,7 +13,8 @@ export class PaymentTabComponent implements OnInit {
 
   constructor(
     private rentalService : RentalService,
-    private router : Router
+    private router : Router,
+    private alertifyService : AlertifyService
   ) { }
 
   createPaymentModel : CreateCreditCardInfosModel = new CreateCreditCardInfosModel();
@@ -21,6 +23,11 @@ export class PaymentTabComponent implements OnInit {
   ngOnInit(): void {
     this.createPaymentModel.creditCardNo = "";
     this.createPaymentModel.validDate = "";
+  }
+
+  saveCard(){
+    this.rentalService.setCardInfo(this.createPaymentModel);
+    this.alertifyService.success("Kart bilgileri kaydedildi.")
   }
 
   prevPage(){

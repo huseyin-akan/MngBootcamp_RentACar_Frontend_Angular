@@ -76,7 +76,7 @@
                 
                 <!-- <button pButton label="Kiralamayı Tamamla" icon="pi pi-credit-card" type="button" class="p-button-success"
                     [disabled]="wrongDateSelection || paymentForm.invalid" (click)="rentCar()"></button> -->
-                <button [disabled]="!userLoggedIn" pButton label="Kiralamayı Tamamla" icon="pi pi-credit-card" type="button" class="p-button-success"></button>
+                <button [disabled]="!userLoggedIn" pButton label="Kiralamayı Tamamla" icon="pi pi-credit-card" type="button" class="p-button-success" (click)="rentCar()"></button>
                 <p-message *ngIf="!userLoggedIn" severity="error" text="Kiralama İçin Giriş Yapmalısınız"></p-message>
             </div>
         </div>

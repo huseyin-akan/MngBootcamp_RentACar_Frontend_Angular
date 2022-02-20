@@ -1,6 +1,6 @@
 import { CreateCreditCardInfosModel } from "./createCreditCardInfosModel";
 
-export interface CreateRentalModel{
+export class CreateRentalModel{
     rentDate : Date
     returnDate : Date
     rentCityId : number
@@ -9,4 +9,8 @@ export interface CreateRentalModel{
     customerId : number
     additionalServiceIds : number[]
     creditCardInfos : CreateCreditCardInfosModel
+
+    constructor() {
+        this.additionalServiceIds = [];
+    }
 }

@@ -1,3 +1,6 @@
+import { CreatedInvoiceDto } from './../models/invoiceModels/createdInvoiceDto';
+import { HttpClient } from '@angular/common/http';
+import { AuthService } from 'src/app/core/services/auth.service';
 import { CityListModel } from 'src/app/features/rentals/models/cityListModel';
 import { environment } from 'src/environments/environment';
 import { AdditionalServiceService } from './additional-service.service';
@@ -7,12 +10,15 @@ import { SelectedRentalOps } from './../models/rentalModels/selectedRentalOps';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { ServiceType } from '../models/additionalServices/serviceType';
+import { CreateRentalModel } from '../models/rentalModels/createRentalModel';
+import { CreateCreditCardInfosModel } from '../models/rentalModels/createCreditCardInfosModel';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RentalService {
 
+  apiUrl : string = environment.apiUrl + "Rentals/";;
   private selectedRentalOpsObj : SelectedRentalOps = new SelectedRentalOps();
   private selectedRentalOpsSubject : BehaviorSubject<SelectedRentalOps>;
   public selectedRentalOps : Observable<SelectedRentalOps>;
@@ -24,7 +30,9 @@ export class RentalService {
   private cityToCityServiceKey : string = environment.cityTOCityService;
 
   constructor(
-    private additionalServiceService : AdditionalServiceService
+    private additionalServiceService : AdditionalServiceService,
+    private authService : AuthService,
+    private httpClient : HttpClient
   ) {
     this.selectedRentalOpsSubject = new BehaviorSubject<SelectedRentalOps>(this.selectedRentalOpsObj);
     this.selectedRentalOps = this.selectedRentalOpsSubject.asObservable();
@@ -32,6 +40,25 @@ export class RentalService {
     this.additionalServiceService.getAdditionalServices().subscribe( (response) => {
       this.additionalServices = response.items;
     })
+  }
+
+  rentCar(){
+    let createRentalModel : CreateRentalModel = new CreateRentalModel();
+
+    createRentalModel.rentDate = this.selectedRentalOpsObj.rentDate;
+    createRentalModel.returnDate = this.selectedRentalOpsObj.returnDate;
+    createRentalModel.rentCityId = this.selectedRentalOpsObj.rentCity.id;
+    createRentalModel.returnCityId = this.selectedRentalOpsObj.returnCity.id;
+    createRentalModel.carId = this.selectedRentalOpsObj.selectedCar.id;
+    createRentalModel.customerId = this.authService.getUserId();   
+    console.log(this.selectedRentalOpsObj.selectedASs); 
+    this.selectedRentalOpsObj.selectedASs.forEach( as => createRentalModel.additionalServiceIds.push(as.id));
+    createRentalModel.creditCardInfos = this.selectedRentalOpsObj.creditCardInfos;
+
+    return this.httpClient.post<CreatedInvoiceDto>(
+      this.apiUrl + 'rentforindividual',
+      createRentalModel
+    );
   }
 
   setSelectedCar(selectedCar : CarListModel){
@@ -81,6 +108,10 @@ export class RentalService {
     this.selectedRentalOpsObj.selectedASs = this.selectedRentalOpsObj.selectedASs.filter( x => x.id != selectedAS.id);
     this.updateTotalSum();
     this.updateObservable();
+  }
+
+  setCardInfo(createPaymentModel : CreateCreditCardInfosModel){
+    this.selectedRentalOpsObj.creditCardInfos = createPaymentModel;
   }
 
   updateTotalSum(){    
