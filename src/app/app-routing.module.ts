@@ -1,3 +1,4 @@
+import { PaymentTabComponent } from './features/rentals/components/rental/tabs/payment-tab/payment-tab.component';
 import { CarSelectTabComponent } from './features/rentals/components/rental/tabs/car-select-tab/car-select-tab.component';
 import { RentalTabComponent } from './features/rentals/components/rental/tabs/rental-tab/rental-tab.component';
 import { RentalComponent } from './features/rentals/components/rental/rental.component';
@@ -38,6 +39,7 @@ const routes: Routes = [
       {path : 'select-date', component : RentalTabComponent },
       {path : 'select-car', component : CarSelectTabComponent },
       {path : 'select-extra', component : ExtrasTabComponent },
+      {path : 'payment', component : PaymentTabComponent },
     ]},
 
   //boş veride ana sayfaya gönder.

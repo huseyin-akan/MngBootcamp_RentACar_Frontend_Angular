@@ -1,5 +1,5 @@
+import { ASListModel } from './../models/additionalServices/aSListModel';
 import { CarListModel } from 'src/app/features/rentals/models/carModels/carListModel';
-import { AdditionalService } from './../models/additionalServices/additionalService';
 import { SelectedRentalOps } from './../models/rentalModels/selectedRentalOps';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
@@ -52,17 +52,21 @@ export class RentalService {
     this.updateObservable();
   }
 
-  addAdditionalService(selectedAS : AdditionalService){
+  addAdditionalService(selectedAS : ASListModel){
     this.selectedRentalOpsObj.selectedASs.push(selectedAS);
     this.updateObservable();
   }
 
-  removeAdditionalService(selectedAS : AdditionalService){
-
+  removeAdditionalService(selectedAS : ASListModel){
+    this.selectedRentalOpsObj.selectedASs = this.selectedRentalOpsObj.selectedASs.filter( x => x.id != selectedAS.id);
   }
 
   updateTotalSum(){    
     
+  }
+
+  checkIfASItemSelected(id : number){
+    return this.selectedRentalOpsObj.selectedASs.filter(x=>x.id == id).length >0; 
   }
 
   private updateObservable(){

@@ -1,5 +1,5 @@
+import { ASListModel } from './../additionalServices/aSListModel';
 import { CarListModel } from '../carModels/carListModel';
-import { AdditionalService } from './../additionalServices/additionalService';
 
 export class SelectedRentalOps{
     rentDate : Date;
@@ -7,7 +7,7 @@ export class SelectedRentalOps{
     rentCity : string;
     returnCity : string;
     selectedCar : CarListModel;
-    selectedASs: AdditionalService[];
+    selectedASs: ASListModel[];
     totalSum : number;
 
     constructor(){

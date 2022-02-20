@@ -21,7 +21,6 @@ export class CarSelectTabComponent implements OnInit {
 
   cars :CarListModel[] = [];
   sortOptions: SelectItem[];
-  sortOptions2: SelectItem[];
   sortOrder: number;
   sortField: string;
   selectedCar : CarListModel;
@@ -32,11 +31,6 @@ export class CarSelectTabComponent implements OnInit {
     this.sortOptions = [
       {label: 'Price High to Low', value: '!dailyPrice'},
       {label: 'Price Low to High', value: 'dailyPrice'}
-  ];
-
-  this.sortOptions2 = [
-    {label: 'Price High to Low', value: '!dailyPrice'},
-    {label: 'Price Low to High', value: 'dailyPrice'}
   ];
 
   this.selectedCar = this.rentalService.getSelectedCar();
