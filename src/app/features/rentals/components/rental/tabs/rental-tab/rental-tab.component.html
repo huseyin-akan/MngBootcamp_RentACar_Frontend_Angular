@@ -1,0 +1,91 @@
+<!-- Renting Tab-->
+<p-card>
+    <ng-template pTemplate="title">
+        Rezervasyon Yapın:
+    </ng-template>
+    <ng-template pTemplate="subtitle">
+        Tarih ve Şehir Seçimi Yapınız
+    </ng-template>
+
+    <ng-template pTemplate="content">
+        <form [formGroup]="rentalForm" class="form-group">
+
+            <h2> REZERVASYON YAPIN</h2>
+
+            <div class="row">
+                <div class="col-6">
+                    <div class="p-field p-col-12 p-md-4" >
+                        <label class="rent-tab-label" for="icon">Kiralama Tarihi</label>
+                        <br>
+                        <p-calendar formControlName="rentDate" [minDate]="minDateValue"
+                            [showIcon]="true" (onSelect)="onRentDateSelect()" id="clnd_rentDate"
+                            inputId="icon"></p-calendar>
+
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="p-field p-col-12 p-md-4">
+                        <label class="rent-tab-label" for="icon">Teslim Tarihi</label>
+                        <br>
+                        <p-calendar formControlName="returnDate" [minDate]="minDateValue"
+                            [showIcon]="true" (onSelect)="onReturnDateSelect()" id="clnd_returnDate"
+                            inputId="icon"></p-calendar>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="wrongDateSelection"
+                    class="alert alert-danger">
+                    Tarih seçiminiz geçersiz. Lütfen geçerli tarih girişi yapınız.
+            </div>
+
+            <div class="mb-3">
+                <label class="rent-tab-label" for="carClasses">Aracı teslim alacağınız şehir</label>
+                <select class="form-control" formControlName="rentedCityId" id="rentedCityId"
+                    (change)="changeRentCity($event.target.value)">
+                    <option *ngFor="let city of cities; let i = index" [value]="city.id">
+                        {{city.cityName}}
+                    </option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="rent-tab-label" for="carClasses">Aracı teslim edeceğiniz şehir</label>
+                <select class="form-control" formControlName="returnedCityId" id="returnedCityId"
+                    (change)="changeReturnedCity($event.target.value)">
+                    <option *ngFor="let city of cities; let i = index" [value]="city.id">
+                        {{city.cityName}}
+                    </option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <input type="text" placeholder="Mail adresinizi giriniz"
+                    formControlName="mailAddress" class="form-control" id="mailAdress"
+                    name="mailAdress" />
+                <div *ngIf="rentalForm.get('mailAddress').hasError('email')"
+                    class="alert alert-danger">
+                    Lütfen geçerli bir mail adresi giriniz.
+                </div>
+                <div *ngIf="rentalForm.get('mailAddress').errors?.required && (rentalForm.get('mailAddress').dirty || rentalForm.get('mailAddress').touched) "
+                    class="alert alert-danger">
+                    Mail kısmı zorunludur.
+                </div>
+                <div *ngIf="customerFound" id="mail-logged-message" class="alert alert-success">
+                    Sayın {{user.firstName}} hoş geldiniz. Müşteri kaydı yapmanız gerekmemektedir.
+                </div>
+                <div *ngIf="customerFound == false && rentalForm.get('mailAddress').dirty"
+                    id="mail-logged-message" class="alert alert-danger">
+                    Sayın müşterimiz. Bu maile kayıtlı bir hesap bulunmamaktadır. Müşteri kayıt
+                    sayfasından kayıt yapınız.
+                </div>
+            </div>
+        </form>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <div class="grid grid-nogutter justify-content-end">
+            <p-button label="Next" (onClick)="nextPage()" icon="pi pi-angle-right" iconPos="right"></p-button>
+        </div>
+    </ng-template>
+</p-card>

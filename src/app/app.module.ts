@@ -16,6 +16,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { CheckboxModule } from 'primeng/checkbox';
 import { RatingModule } from 'primeng/rating';
 import { DropdownModule } from 'primeng/dropdown';
+import { StepsModule} from 'primeng/steps';
 import { CarComponent } from './features/rentals/components/car/car.component';
 import { BrandComponent } from './features/rentals/components/brand/brand.component';
 import { ListboxModule} from 'primeng/listbox';
@@ -33,6 +34,12 @@ import { TableModule} from 'primeng/table';
 import { ConfirmPopupModule} from 'primeng/confirmpopup';
 import { ConfirmationService } from 'primeng/api';
 import { CardModule } from 'primeng/card';
+import { RentalComponent } from './features/rentals/components/rental/rental.component';
+import { RentalTabComponent } from './features/rentals/components/rental/tabs/rental-tab/rental-tab.component';
+import { CarSelectTabComponent } from './features/rentals/components/rental/tabs/car-select-tab/car-select-tab.component';
+import { CustomerTabComponent } from './features/rentals/components/rental/tabs/customer-tab/customer-tab.component';
+import { ExtrasTabComponent } from './features/rentals/components/rental/tabs/extras-tab/extras-tab.component';
+import { PaymentTabComponent } from './features/rentals/components/rental/tabs/payment-tab/payment-tab.component';
 
 
 export function tokenGetter() {
@@ -50,7 +57,13 @@ export function tokenGetter() {
     LoginComponent,
     ProfileSectionComponent,
     RegisterComponent,
-    ErrorComponent],
+    ErrorComponent,
+    RentalComponent,
+    RentalTabComponent,
+    CarSelectTabComponent,
+    CustomerTabComponent,
+    ExtrasTabComponent,
+    PaymentTabComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -70,6 +83,7 @@ export function tokenGetter() {
     TagModule,
     PanelModule,
     InputTextModule,
+    StepsModule,
     CalendarModule,
     CheckboxModule,
     DropdownModule,

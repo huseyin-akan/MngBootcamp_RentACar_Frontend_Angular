@@ -1,3 +1,5 @@
+import { RentalTabComponent } from './features/rentals/components/rental/tabs/rental-tab/rental-tab.component';
+import { RentalComponent } from './features/rentals/components/rental/rental.component';
 import { AdminColorsComponent } from './admin/components/admin-colors/admin-colors.component';
 import { AddCarComponent } from './admin/components/add-car/add-car.component';
 import { AdminCarsComponent } from './admin/components/admin-cars/admin-cars.component';
@@ -29,6 +31,10 @@ const routes: Routes = [
           { path: 'addcolor', component: AddColorComponent },
         ]
   },
+  {path : "rental", component: RentalComponent,
+    children : [
+      {path : 'choose-date', component : RentalTabComponent }
+    ]},
 
   //boş veride ana sayfaya gönder.
   {path:'' , redirectTo: '/home', pathMatch : "full"},

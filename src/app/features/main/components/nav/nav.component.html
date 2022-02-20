@@ -20,7 +20,9 @@
                 <nav class="site-navigation position-relative text-right" role="navigation">
 
                     <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-                        <li class="active"><a routerLink="/home"><span>Home</span></a></li>
+                        <li class="active"><a routerLink="/home"><span>Ana Sayfa</span></a></li>
+                        <li><a routerLink="/rental" routerLinkActive="active"><span>Kiralama Yap</span></a></li>
+                        <li><a routerLink="/cars" routerLinkActive="active"><span>Müsait Araçlar</span></a></li>
                         <li class="has-children">
                             <a routerLink="/home" routerLinkActive="active"><span>Dropdown</span></a>
                             <ul class="dropdown arrow-top">
@@ -38,10 +40,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li><a routerLink="/cars" routerLinkActive="active"><span>Rentable Cars</span></a></li>
-                        <li><a routerLink="/home" routerLinkActive="active"><span>About</span></a></li>
-                        <li><a routerLink="/home" routerLinkActive="active"><span>Blog</span></a></li>
-                        <li><a routerLink="/home" routerLinkActive="active"><span>Contact</span></a></li>
+                        <li><a routerLink="/home" routerLinkActive="active"><span>İletişim</span></a></li>
                         <li *ngIf="adminLoggedIn" ><a routerLink="/adminalThings" routerLinkActive="active" ><span>Admin</span></a></li>
                         <li> <app-profile-section></app-profile-section> </li>
                     </ul>
