@@ -33,7 +33,7 @@ export class RentalComponent implements OnInit {
     this.items = [
       { label: 'Tarih Seçim', routerLink : "/rental/select-date" },
       { label: 'Araç Seçim', routerLink : "/rental/select-car" },
-      { label: 'Ek Hizmet', routerLink : "/rental/select-casd"},
+      { label: 'Ek Hizmet', routerLink : "/rental/select-extra"},
       { label: 'Kayıt', routerLink : "/rental/select-asd"},
       { label: 'Ödeme', routerLink : "/rental/select-casdar"},
       { label: 'Fatura', routerLink : "/rental/select-casdar"}
@@ -49,7 +49,7 @@ export class RentalComponent implements OnInit {
   }
 
   denemasyon(){
-    this.rentalService.setSelectedCar("Husoka");
+    //this.rentalService.setSelectedCar("Husoka");
   }
 
  

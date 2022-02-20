@@ -38,7 +38,8 @@
                     </tr>
                     <tr>
                         <td> Araç: </td>
-                        <td id="ypt_selected_car"> {{selectedRentalOps.selectedCar}}</td>
+                        <td *ngIf="selectedRentalOps.selectedCar.id"> {{selectedRentalOps.selectedCar.brand + " " + selectedRentalOps.selectedCar.model}}</td>
+                        <td *ngIf="!selectedRentalOps.selectedCar.id"> </td>
                     </tr>
                 </tbody>
             </table>

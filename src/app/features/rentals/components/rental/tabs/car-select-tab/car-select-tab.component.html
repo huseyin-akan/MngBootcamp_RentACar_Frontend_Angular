@@ -6,7 +6,7 @@
 
     <ng-template pTemplate="content" style="margin-top:0">
         <div class="card">
-            <p-dataView #dv [value]="cars" [paginator]="true" [rows]="5" filterBy="name"
+            <p-dataView #dv [value]="cars" [paginator]="true" [rows]="5" filterBy="car.model"
                 [sortField]="sortField" [sortOrder]="sortOrder" layout="list">
                 <ng-template pTemplate="header">
                     <div class="flex flex-column md:flex-row md:justify-content-between">
@@ -26,20 +26,20 @@
                             <img [src]="car.imageUrl" [alt]="car.brand" />
                             <div class="product-list-detail">
                                 <div class="product-name">{{car.brand}}</div>
-                                <div class="product-description">{{car.description}}</div>
+                                <div class="product-description">{{car.model}}</div>
                                 <p-rating [ngModel]="car.findexScore" [readonly]="true" [cancel]="false">
                                 </p-rating>
                                 <i class="pi pi-tag product-category-icon"></i><span
-                                    class="product-category">{{car.modelName}}</span>
+                                    class="product-category">{{car.model}}</span>
                             </div>
                             <div class="product-list-action">
                                 <span class="product-price">₺{{car.dailyPrice}}</span>
-                                <button *ngIf="car.id == selectedCar" pButton label="Seçildi"
+                                <button *ngIf="car.id == selectedCar.id" pButton label="Seçildi"
                                     icon="pi pi-shopping-cart" type="button" id="btn_car_select_{{car.id}}"
-                                    class="p-button-success" (click)="selectCar(car.id)"></button>
-                                <button *ngIf="car.id != selectedCar" pButton label="Seç"
+                                    class="p-button-success" (click)="selectCar(car)"></button>
+                                <button *ngIf="car.id != selectedCar.id" pButton label="Seç"
                                     icon="pi pi-shopping-cart" type="button" id="btn_car_select_{{car.id}}"
-                                    class="p-button-primary" (click)="selectCar(car.id)"></button>
+                                    class="p-button-primary" (click)="selectCar(car)"></button>
                             </div>
                         </div>
                     </div>
