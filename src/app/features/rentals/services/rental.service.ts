@@ -1,3 +1,4 @@
+import { CityListModel } from 'src/app/features/rentals/models/cityListModel';
 import { environment } from 'src/environments/environment';
 import { AdditionalServiceService } from './additional-service.service';
 import { ASListModel } from './../models/additionalServices/aSListModel';
@@ -54,7 +55,7 @@ export class RentalService {
     this.updateObservable();
   }
 
-  setRentCity(rentCity : string){
+  setRentCity(rentCity : CityListModel){
     this.selectedRentalOpsObj.rentCity = rentCity;
     this.updateDayDiff();
     this.updateObservable();
@@ -62,7 +63,7 @@ export class RentalService {
     this.checkIfCitiesDiffer();
   }
 
-  setReturnCity(returnCity : string){
+  setReturnCity(returnCity : CityListModel){
     this.selectedRentalOpsObj.returnCity = returnCity;
     this.updateObservable();
 
@@ -104,6 +105,12 @@ export class RentalService {
     return this.selectedRentalOpsObj.selectedASs.filter(x=>x.id == id).length >0; 
   }
 
+  checkIfDatesValid(){
+    if(this.selectedRentalOpsObj.rentDate == undefined || this.selectedRentalOpsObj.returnDate == undefined) return true;
+
+    return this.selectedRentalOpsObj.rentDate <= this.selectedRentalOpsObj.returnDate;
+  }
+
   private updateObservable(){
     this.selectedRentalOpsSubject.next(this.selectedRentalOpsObj);
   }
@@ -118,9 +125,9 @@ export class RentalService {
   }
 
   private checkIfCitiesDiffer(){
-    if(this.selectedRentalOpsObj.rentCity !== this.selectedRentalOpsObj.returnCity && 
-      (this.selectedRentalOpsObj.rentCity != "") &&
-      (this.selectedRentalOpsObj.returnCity != "") )
+    if(this.selectedRentalOpsObj.rentCity.id != this.selectedRentalOpsObj.returnCity.id && 
+      (this.selectedRentalOpsObj.rentCity.name != "") &&
+      (this.selectedRentalOpsObj.returnCity.name != "") )
     {
       if(!this.selectedRentalOpsObj.selectedASs.find(as => as.serviceName == this.cityToCityServiceKey))
       this.selectedRentalOpsObj.selectedASs.push(this.additionalServices.find(as => as.serviceName == this.cityToCityServiceKey))

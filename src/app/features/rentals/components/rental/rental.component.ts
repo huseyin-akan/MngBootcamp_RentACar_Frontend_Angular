@@ -8,6 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { SelectedRentalOps } from '../../models/rentalModels/selectedRentalOps';
 import { RentalService } from '../../services/rental.service';
+import { AuthService } from 'src/app/core/services/auth.service';
 //for Jquery
 declare var $: any;
 
@@ -21,11 +22,13 @@ export class RentalComponent implements OnInit {
   items: MenuItem[];
   subscription : Subscription;
   selectedRentalOps : SelectedRentalOps; 
+  userLoggedIn : boolean = false;
 
   constructor(
     private primengConfig: PrimeNGConfig,
     private activatedRoute: ActivatedRoute,
-    private rentalService : RentalService
+    private rentalService : RentalService,
+    private authService : AuthService
   ) {}
 
   ngOnInit(): void {
@@ -45,6 +48,12 @@ export class RentalComponent implements OnInit {
         this.selectedRentalOps = response;
       }
     )
+
+    this.authService.isLogged.subscribe({
+      next : (response) => {
+        this.userLoggedIn = response;
+      }
+    })
   }
 
   denemasyon(){

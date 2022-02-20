@@ -32,6 +32,8 @@ import { RadioButtonModule} from 'primeng/radiobutton';
 import { AdminModule } from './admin/admin.module';
 import { TableModule} from 'primeng/table';
 import { ConfirmPopupModule} from 'primeng/confirmpopup';
+import { MessagesModule} from 'primeng/messages';
+import { MessageModule} from 'primeng/message';
 import { ConfirmationService } from 'primeng/api';
 import { CardModule } from 'primeng/card';
 import { RentalComponent } from './features/rentals/components/rental/rental.component';
@@ -79,6 +81,8 @@ export function tokenGetter() {
     ButtonModule,
     ConfirmPopupModule,
     DataViewModule,
+    MessagesModule,
+    MessageModule,
     RatingModule,
     DialogModule,
     RippleModule,

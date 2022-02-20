@@ -8,8 +8,8 @@
         <form [formGroup]="rentalForm" class="form-group">
             <div class="row">
                 <div class="col-6">
-                    <div class="p-field p-col-6 p-md-4" >
-                        <label class="rent-tab-label" for="icon">Kiralama Tarihi</label>
+                    <div class="mb-3" >
+                        <label class="rent-tab-label">Kiralama Tarihi</label>
                         <br>
                         <p-calendar [style]="{'width':'77%', 'height':'50%'}" [inputStyle]="{'width':'10%', 'height':'50%'}" formControlName="rentDate" [inline]="true" (onSelect)="onRentDateSelect()"
                         [minDate]="minDateValue"  ></p-calendar>
@@ -17,8 +17,8 @@
                     </div>
                 </div>
                 <div class="col-6">
-                    <div class="p-field p-col-6 p-md-4">
-                        <label class="rent-tab-label" for="icon">Teslim Tarihi</label>
+                    <div class="mb-3">
+                        <label class="rent-tab-label">Teslim Tarihi</label>
                         <br>
                         <p-calendar [style]="{'width':'77%'}" [inputStyle]="{'width':'10%'}" formControlName="returnDate" [inline]="true" (onSelect)="onReturnDateSelect()"
                             [minDate]="minDateValue"  ></p-calendar>
@@ -26,7 +26,7 @@
                 </div>
             </div>
 
-            <div *ngIf="wrongDateSelection"
+            <div *ngIf="!dateSelectionIsValid"
                     class="alert alert-danger">
                     Tarih seçiminiz geçersiz. Lütfen geçerli tarih girişi yapınız.
             </div>
@@ -34,24 +34,14 @@
             <div class="row">
                 <div class="col-6">
                     <div class="mb-3">
-                        <label class="rent-tab-label" for="carClasses">Aracı teslim alacağınız şehir</label>
-                        <select class="form-control" formControlName="rentedCityId" id="rentedCityId"
-                            (change)="onRentCitySelect($event.target.value)">
-                            <option *ngFor="let city of cities; let i = index" [value]="city.id">
-                                {{city.name}}
-                            </option>
-                        </select>
+                        <p-dropdown [options]="cities" formControlName="rentCity" optionLabel="name" optionValue="id" 
+                        (onChange)="onRentCitySelect($event.value)" placeholder="Kiralanacak Şehir" ></p-dropdown>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="mb-3">
-                        <label class="rent-tab-label" for="carClasses">Aracı teslim edeceğiniz şehir</label>
-                        <select class="form-control" formControlName="returnedCityId" id="returnedCityId"
-                            (change)="onReturnCitySelect($event.target.value)">
-                            <option *ngFor="let city of cities; let i = index" [value]="city.id">
-                                {{city.name}}
-                            </option>
-                        </select>
+                        <p-dropdown [options]="cities" formControlName="returnCity" optionLabel="name" optionValue="id" 
+                        (onChange)="onReturnCitySelect($event.value)" placeholder="Teslim Edilecek Şehir"></p-dropdown>
                     </div>
                 </div>
             </div>            
@@ -60,7 +50,7 @@
 
     <ng-template pTemplate="footer">
         <div class="justify-content-end d-flex">
-            <p-button label="Next" [disabled]="!rentalForm.valid" (onClick)="nextPage()" icon="pi pi-angle-right" iconPos="right"></p-button>
+            <p-button label="Next" [disabled]="!rentalForm.valid || !dateSelectionIsValid" (onClick)="nextPage()" icon="pi pi-angle-right" iconPos="right"></p-button>
         </div>
     </ng-template>
 </p-card>

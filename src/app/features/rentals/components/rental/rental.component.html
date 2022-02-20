@@ -31,11 +31,13 @@
                         </tr>
                         <tr>
                             <td> Kiralanacak Şehir: </td>
-                            <td id="ypt_rent_city"> {{selectedRentalOps.rentCity}} </td>
+                            <td *ngIf="selectedRentalOps.rentCity" id="ypt_rent_city"> {{selectedRentalOps.rentCity.name}} </td>
+                            <td *ngIf="!selectedRentalOps.rentCity"> </td>
                         </tr>
                         <tr>
                             <td> Teslim Edilecek Şehir: </td>
-                            <td id="ypt_returned_city"> {{selectedRentalOps.returnCity}}</td>
+                            <td *ngIf="selectedRentalOps.returnCity" id="ypt_returned_city"> {{selectedRentalOps.returnCity.name}}</td>
+                            <td *ngIf="!selectedRentalOps.returnCity"> </td>
                         </tr>
                         <tr>
                             <td> Araç: </td>
@@ -74,7 +76,8 @@
                 
                 <!-- <button pButton label="Kiralamayı Tamamla" icon="pi pi-credit-card" type="button" class="p-button-success"
                     [disabled]="wrongDateSelection || paymentForm.invalid" (click)="rentCar()"></button> -->
-                <button pButton label="Kiralamayı Tamamla" icon="pi pi-credit-card" type="button" class="p-button-success"></button>
+                <button [disabled]="!userLoggedIn" pButton label="Kiralamayı Tamamla" icon="pi pi-credit-card" type="button" class="p-button-success"></button>
+                <p-message *ngIf="!userLoggedIn" severity="error" text="Kiralama İçin Giriş Yapmalısınız"></p-message>
             </div>
         </div>
     </div>
