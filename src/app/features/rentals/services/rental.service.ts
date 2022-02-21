@@ -1,3 +1,5 @@
+import { EndRentalModel } from './../models/rentalModels/endRentalModel';
+import { PagedListResponseModel } from 'src/app/core/models/pagedListResponseModel';
 import { CreatedInvoiceDto } from './../models/invoiceModels/createdInvoiceDto';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from 'src/app/core/services/auth.service';
@@ -12,6 +14,7 @@ import { Injectable } from '@angular/core';
 import { ServiceType } from '../models/additionalServices/serviceType';
 import { CreateRentalModel } from '../models/rentalModels/createRentalModel';
 import { CreateCreditCardInfosModel } from '../models/rentalModels/createCreditCardInfosModel';
+import { ActiveRentalsListDto } from '../models/rentalModels/activeRentalsListDto';
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +44,16 @@ export class RentalService {
     this.additionalServiceService.getAdditionalServices().subscribe( (response) => {
       this.additionalServices = response.items;
     })
+  }
+
+  getActiveRentals(page: number= 0, size: number = 100){
+    let newPath = `${this.apiUrl}getactiverentals?Page=${page}&PageSize=${size}`;
+    return this.httpClient.get<PagedListResponseModel<ActiveRentalsListDto>>(newPath);
+  }
+
+  endRental(endRentalModel : EndRentalModel){
+    let newPath = `${this.apiUrl}endrentalforic`;
+    return this.httpClient.post(newPath, endRentalModel);
   }
 
   rentCar(){

@@ -1,0 +1,57 @@
+<div class="table-positioner">
+    <p-table *ngIf="rentalsLoaded" [value]="rentals">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Kiralama Id</th>
+                <th>Kiralama Tarihi</th>
+                <th>Dönüş Tarihi</th>
+                <th>Kiralanan Şehir</th>
+                <th>Dönüş Şehri</th>
+                <th>Kiralanan Kilometre</th>
+                <th>Araç Id</th>
+                <th>Araç Modeli</th>
+                <th>Araç Model Yılı</th>
+                <th>Kiralayan Id</th>
+                <th>İşlem:</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rental>
+            <tr>
+                <td>{{rental.id}}</td>
+                <td>{{rental.rentDate |date: 'dd.LL.y'}}</td>
+                <td>{{rental.returnDate |date: 'dd.LL.y'}}</td>
+                <td>{{rental.rentCity}}</td>
+                <td>{{rental.returnCity}}</td>
+                <td>{{rental.rentedKilometer}}</td>
+                <td>{{rental.carId}}</td>
+                <td>{{rental.modelName}}</td>
+                <td>{{rental.modelYear}}</td>
+                <td>{{rental.customerId}}</td>
+                <td> <p-button icon="pi pi-check" iconPos="left" label="Kirayı Sonlandır" (onClick)="showUpdateDialog(rental)"> </p-button> </td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+    <p-dialog *ngIf="displayUpdateDialog" header="Kiralamayı Sonlandır:" [(visible)]="displayUpdateDialog">
+        
+        <div class="form-group">            
+            <div class="form-outline mb-3">
+                <input type="text" placeholder="Aracın Dönüş Kilometresini giriniz" [(ngModel)]="returnedKilometer" class="form-control" name="returnedKilometer"/>
+            </div>
+
+            <div class="form-outline mb-3">
+                <label>Kiralama Tarihi</label>
+                <br>
+                <p-calendar [(ngModel)]="returnedDate" [inline]="true" name="returnedDate"></p-calendar> 
+            </div>
+
+            <div *ngIf="this.citiesLoaded" class="form-outline mb-3">
+                <p-dropdown [options]="cities" [(ngModel)]="returnedCityId" optionLabel="name" optionValue="id" placeholder="Dönüş Şehrini Giriniz:"></p-dropdown>
+            </div>
+        
+            <button type="button" class="btn btn-primary" (click)="endRental()"> Sonlandır</button>        
+        </div>
+
+    </p-dialog>
+
+</div>

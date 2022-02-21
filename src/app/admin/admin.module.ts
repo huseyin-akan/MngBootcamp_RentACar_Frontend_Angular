@@ -18,6 +18,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AddCarComponent } from './components/add-car/add-car.component';
 import { AdminColorsComponent } from './components/admin-colors/admin-colors.component';
 import { AddColorComponent } from './components/add-color/add-color.component';
+import { AdminRentalComponent } from './components/admin-rental/admin-rental.component';
+import { CalendarModule } from 'primeng/calendar';
 
 
 @NgModule({
@@ -27,7 +29,8 @@ import { AddColorComponent } from './components/add-color/add-color.component';
     AdminCarsComponent,
     AddCarComponent,
     AdminColorsComponent,
-    AddColorComponent
+    AddColorComponent,
+    AdminRentalComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,8 @@ import { AddColorComponent } from './components/add-color/add-color.component';
     DropdownModule,
     DialogModule,
     ConfirmPopupModule,
-    CardModule
+    CardModule,
+    CalendarModule
   ],
   exports:[
     DashboardComponent

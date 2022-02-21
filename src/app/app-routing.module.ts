@@ -1,3 +1,4 @@
+import { AdminRentalComponent } from './admin/components/admin-rental/admin-rental.component';
 import { PaymentTabComponent } from './features/rentals/components/rental/tabs/payment-tab/payment-tab.component';
 import { CarSelectTabComponent } from './features/rentals/components/rental/tabs/car-select-tab/car-select-tab.component';
 import { RentalTabComponent } from './features/rentals/components/rental/tabs/rental-tab/rental-tab.component';
@@ -33,6 +34,7 @@ const routes: Routes = [
           { path: 'addcar', component: AddCarComponent },
           { path: 'colors', component: AdminColorsComponent },
           { path: 'addcolor', component: AddColorComponent },
+          { path: 'rental', component: AdminRentalComponent },
         ]
   },
   {path : "rental", component: RentalComponent,
