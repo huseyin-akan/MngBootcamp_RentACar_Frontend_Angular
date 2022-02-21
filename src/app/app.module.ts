@@ -39,11 +39,11 @@ import { CardModule } from 'primeng/card';
 import { RentalComponent } from './features/rentals/components/rental/rental.component';
 import { RentalTabComponent } from './features/rentals/components/rental/tabs/rental-tab/rental-tab.component';
 import { CarSelectTabComponent } from './features/rentals/components/rental/tabs/car-select-tab/car-select-tab.component';
-import { CustomerTabComponent } from './features/rentals/components/rental/tabs/customer-tab/customer-tab.component';
 import { ExtrasTabComponent } from './features/rentals/components/rental/tabs/extras-tab/extras-tab.component';
 import { PaymentTabComponent } from './features/rentals/components/rental/tabs/payment-tab/payment-tab.component';
 import { CardDateFormatPipe } from './core/pipes/card-date-format.pipe';
 import { CreditCardFormatPipe } from './core/pipes/credit-card-format.pipe';
+import { InvoiceTabComponent } from './features/rentals/components/rental/tabs/invoice-tab/invoice-tab.component';
 
 
 export function tokenGetter() {
@@ -65,11 +65,11 @@ export function tokenGetter() {
     RentalComponent,
     RentalTabComponent,
     CarSelectTabComponent,
-    CustomerTabComponent,
     ExtrasTabComponent,
     PaymentTabComponent,
     CardDateFormatPipe,
-    CreditCardFormatPipe],
+    CreditCardFormatPipe,
+    InvoiceTabComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

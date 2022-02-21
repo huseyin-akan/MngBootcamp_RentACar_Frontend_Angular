@@ -84,16 +84,13 @@ export class RentalService {
 
   setRentCity(rentCity : CityListModel){
     this.selectedRentalOpsObj.rentCity = rentCity;
-    this.updateDayDiff();
     this.updateObservable();
-
     this.checkIfCitiesDiffer();
   }
 
   setReturnCity(returnCity : CityListModel){
     this.selectedRentalOpsObj.returnCity = returnCity;
     this.updateObservable();
-
     this.checkIfCitiesDiffer();
   }
 
@@ -151,14 +148,13 @@ export class RentalService {
     if(this.dayDiff == 0){
       this.dayForRental = 1;
     }else{
-      this.dayForRental= Math.ceil( this.dayDiff / (1000 * 60 * 60 * 24)); 
+      this.dayForRental= Math.ceil( this.dayDiff / (1000 * 60 * 60 * 24))+1; 
     }
   }
 
   private checkIfCitiesDiffer(){
-    if(this.selectedRentalOpsObj.rentCity.id != this.selectedRentalOpsObj.returnCity.id && 
-      (this.selectedRentalOpsObj.rentCity.name != "") &&
-      (this.selectedRentalOpsObj.returnCity.name != "") )
+    if( this.selectedRentalOpsObj.rentCity && this.selectedRentalOpsObj.returnCity &&
+      this.selectedRentalOpsObj.rentCity.id != this.selectedRentalOpsObj.returnCity.id )
     {
       if(!this.selectedRentalOpsObj.selectedASs.find(as => as.serviceName == this.cityToCityServiceKey))
       this.selectedRentalOpsObj.selectedASs.push(this.additionalServices.find(as => as.serviceName == this.cityToCityServiceKey))

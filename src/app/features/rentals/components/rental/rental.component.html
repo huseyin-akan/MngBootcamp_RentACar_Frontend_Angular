@@ -54,7 +54,7 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let adSer of selectedRentalOps.selectedASs">
-                            <td> {{adSer.description}} </td>
+                            <td> {{adSer.serviceName}} </td>
                             <td> {{adSer.price}}₺</td>
                         </tr>
                         <div *ngIf="selectedRentalOps.selectedASs.length == 0" class="alert alert-danger"> Ek servis seçimi

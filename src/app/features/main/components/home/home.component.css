@@ -1,0 +1,6 @@
+.table-positioner{
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 50vw;
+    padding-top : 20vh;
+}

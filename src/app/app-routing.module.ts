@@ -18,6 +18,7 @@ import { AdminGuard } from './core/guards/admin.guard';
 import { CarComponent } from './features/rentals/components/car/car.component';
 import { AddColorComponent } from './admin/components/add-color/add-color.component';
 import { ExtrasTabComponent } from './features/rentals/components/rental/tabs/extras-tab/extras-tab.component';
+import { InvoiceTabComponent } from './features/rentals/components/rental/tabs/invoice-tab/invoice-tab.component';
 
 const routes: Routes = [
   { path: "login" , component : LoginComponent},
@@ -40,6 +41,7 @@ const routes: Routes = [
       {path : 'select-car', component : CarSelectTabComponent },
       {path : 'select-extra', component : ExtrasTabComponent },
       {path : 'payment', component : PaymentTabComponent },
+      {path : 'invoice', component : InvoiceTabComponent }
     ]},
 
   //boş veride ana sayfaya gönder.
