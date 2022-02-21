@@ -17,12 +17,4 @@ export class CityService {
     let newPath = `${this.apiUrl}getall?Page=${page}&PageSize=${size}`;
     return this.httpClient.get<PagedListResponseModel<CityListModel>>(newPath);
   }
-
-  deleteBrand(){
-
-  }
-
-  updateBrand(){
-    
-  }
 }

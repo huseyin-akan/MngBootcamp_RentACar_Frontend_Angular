@@ -7,6 +7,7 @@ export class CreateRentalModel{
     returnCityId : number
     carId : number
     customerId : number
+    promotionCode : string
     additionalServiceIds : number[]
     creditCardInfos : CreateCreditCardInfosModel
 

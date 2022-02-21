@@ -25,6 +25,7 @@ export class RentalService {
 
   private dayDiff : number = 0;
   private dayForRental : number = 0;
+  private discountRate : number = 0;
 
   private additionalServices : ASListModel[];
   private cityToCityServiceKey : string = environment.cityTOCityService;
@@ -51,7 +52,7 @@ export class RentalService {
     createRentalModel.returnCityId = this.selectedRentalOpsObj.returnCity.id;
     createRentalModel.carId = this.selectedRentalOpsObj.selectedCar.id;
     createRentalModel.customerId = this.authService.getUserId();   
-    console.log(this.selectedRentalOpsObj.selectedASs); 
+    createRentalModel.promotionCode = this.selectedRentalOpsObj.creditCardInfos.code;
     this.selectedRentalOpsObj.selectedASs.forEach( as => createRentalModel.additionalServiceIds.push(as.id));
     createRentalModel.creditCardInfos = this.selectedRentalOpsObj.creditCardInfos;
 
@@ -111,6 +112,11 @@ export class RentalService {
     this.selectedRentalOpsObj.creditCardInfos = createPaymentModel;
   }
 
+  setDiscountRate(discountRate : number){
+    this.discountRate = discountRate;
+    this.updateTotalSum();
+  }
+
   updateTotalSum(){    
     let totalSum = 0;
     
@@ -126,6 +132,7 @@ export class RentalService {
         totalSum += as.price
       }
     }
+    totalSum -= totalSum * this.discountRate / 100;
     this.selectedRentalOpsObj.totalSum = totalSum;
   }
 

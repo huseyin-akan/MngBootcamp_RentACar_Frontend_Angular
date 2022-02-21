@@ -5,28 +5,31 @@
     margin-bottom: 2rem;
 }
 
+.card-container{
+  position:relative;
+  text-align: center;
+  color: white;
+}
+
 .card_card_holder{
   position: absolute;
-  bottom:36%;
-  left: 60%;
-  color : white;
+  top:55%;
+  left: 20%;
   font-size: x-large;
 }
 
 .card_card_number{
   position: absolute;
-  bottom:30%;
-  left: 60%;
-  color : white;
+  top:65%;
+  left: 20%;
   opacity: 0.9;
   font-size: large;
 }
 
 .card_validity_date{
   position: absolute;
-  bottom:62%;
-  left: 80%;
-  color : white;
+  top:30%;
+  left: 70%;
   opacity: 0.9;
   font-size: large;
 }
