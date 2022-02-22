@@ -1,6 +1,8 @@
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+declare let $:any;
 
 @Component({
   selector: 'app-nav',
@@ -13,7 +15,8 @@ export class NavComponent implements OnInit, OnDestroy {
   myAdminSubcsription : Subscription;
   
   constructor(
-    private authService : AuthService
+    private authService : AuthService,
+    private router : Router
   ) { }
 
   ngOnInit(): void {

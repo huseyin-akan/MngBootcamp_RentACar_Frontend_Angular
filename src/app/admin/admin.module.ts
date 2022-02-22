@@ -46,7 +46,8 @@ import { CalendarModule } from 'primeng/calendar';
     DialogModule,
     ConfirmPopupModule,
     CardModule,
-    CalendarModule
+    CalendarModule,
+    RouterModule
   ],
   exports:[
     DashboardComponent

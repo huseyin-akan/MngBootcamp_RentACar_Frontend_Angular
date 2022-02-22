@@ -6,7 +6,7 @@
 
     <ng-template pTemplate="content" style="margin-top:0">
         <div class="card">
-            <p-dataView #dv [value]="additionalServices" [paginator]="true" [rows]="5" filterBy="name"
+            <p-dataView #dv [value]="additionalServices" [paginator]="true" [rows]="5" filterBy="serviceName"
                 layout="list">
                 <ng-template let-additionalService pTemplate="listItem">
                     <div class="col-12">

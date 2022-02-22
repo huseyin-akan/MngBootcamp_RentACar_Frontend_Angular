@@ -44,7 +44,7 @@ import { PaymentTabComponent } from './features/rentals/components/rental/tabs/p
 import { CardDateFormatPipe } from './core/pipes/card-date-format.pipe';
 import { CreditCardFormatPipe } from './core/pipes/credit-card-format.pipe';
 import { InvoiceTabComponent } from './features/rentals/components/rental/tabs/invoice-tab/invoice-tab.component';
-
+import { RouterModule} from '@angular/router';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -84,6 +84,7 @@ export function tokenGetter() {
     MessagesModule,
     MessageModule,
     RatingModule,
+    RouterModule,
     DialogModule,
     RippleModule,
     TableModule,

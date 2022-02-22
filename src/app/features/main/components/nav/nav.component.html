@@ -20,7 +20,7 @@
                 <nav class="site-navigation position-relative text-right" role="navigation">
 
                     <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-                        <li class="active"><a routerLink="/home"><span>Ana Sayfa</span></a></li>
+                        <li class="active"><a routerLink="/home"  routerLinkActive="active" [routerLinkActiveOptions]={exact:true} ><span>Ana Sayfa</span></a></li>
                         <li><a routerLink="/rental/select-date" routerLinkActive="active"><span>Kiralama Yap</span></a></li>
                         <li><a routerLink="/cars" routerLinkActive="active"><span>Müsait Araçlar</span></a></li>
                         <li class="has-children">

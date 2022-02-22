@@ -87,6 +87,7 @@ export class RentalService {
 
   setRentDate(rentDate : Date){
     this.selectedRentalOpsObj.rentDate = rentDate;
+    this.updateDayDiff();
     this.updateObservable();
   }
 
@@ -98,13 +99,11 @@ export class RentalService {
 
   setRentCity(rentCity : CityListModel){
     this.selectedRentalOpsObj.rentCity = rentCity;
-    this.updateObservable();
     this.checkIfCitiesDiffer();
   }
 
   setReturnCity(returnCity : CityListModel){
     this.selectedRentalOpsObj.returnCity = returnCity;
-    this.updateObservable();
     this.checkIfCitiesDiffer();
   }
 
@@ -133,10 +132,10 @@ export class RentalService {
   updateTotalSum(){    
     let totalSum = 0;
     
-    if(this.selectedRentalOpsObj.selectedCar){
+    if(this.selectedRentalOpsObj.selectedCar.id != undefined){
       totalSum += this.dayForRental * this.selectedRentalOpsObj.selectedCar.dailyPrice;
     }    
-    
+
     //calculate all selected additionalServices
     for (const as of this.selectedRentalOpsObj.selectedASs) {
       if(as.serviceType == ServiceType.DailyService){
@@ -145,6 +144,7 @@ export class RentalService {
         totalSum += as.price
       }
     }
+
     totalSum -= totalSum * this.discountRate / 100;
     this.selectedRentalOpsObj.totalSum = totalSum;
   }
@@ -181,6 +181,7 @@ export class RentalService {
     }else{
       this.selectedRentalOpsObj.selectedASs = this.selectedRentalOpsObj.selectedASs.filter( x => x.serviceName != this.cityToCityServiceKey)
     }
+    this.updateTotalSum();
     this.updateObservable(); 
   }
 

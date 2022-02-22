@@ -6,7 +6,7 @@
 
     <ng-template pTemplate="content" style="margin-top:0">
         <div class="card">
-            <p-dataView #dv [value]="cars" [paginator]="true" [rows]="5" filterBy="car.model"
+            <p-dataView #dv [value]="cars" [paginator]="true" [rows]="5" filterBy="brand"
                 [sortField]="sortField" [sortOrder]="sortOrder" layout="list">
                 <ng-template pTemplate="header">
                     <div class="flex flex-column md:flex-row md:justify-content-between">

@@ -58,10 +58,11 @@ export class PaymentTabComponent implements OnInit {
         this.promotionCodeError = err.error.Detail;
         this.promotionCodeValid = false;
         this.discountRate = 0;
+        //TODO: Aşağıdaki yorum satırını sil ve discount rate bug'ını düzelt.
+        //this.rentalService.setDiscountRate(this.discountRate);
       },
       complete: () => {
         this.rentalService.setDiscountRate(this.discountRate);
-        console.log(this.discountRate + " burada discount rate var.")
       }
     });
   }

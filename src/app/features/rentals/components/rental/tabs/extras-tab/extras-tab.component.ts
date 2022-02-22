@@ -1,3 +1,4 @@
+import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { AdditionalServiceService } from './../../../../services/additional-service.service';
 import { Component, OnInit } from '@angular/core';
@@ -36,7 +37,7 @@ export class ExtrasTabComponent implements OnInit {
   getAdditionalServices(){
     this.additionalServiceService.getAdditionalServices().subscribe(
       response => {
-        this.additionalServices = response.items;
+        this.additionalServices = response.items.filter(x => x.serviceName != environment.cityTOCityService);
       }
     );
   }
